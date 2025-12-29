@@ -14,12 +14,14 @@
     <meta property="og:image:alt" content="ナイトワークス サムネイル画像">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="https://about.night-works.jp/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="https://about.night-works.jp/img/apple-touch-icon-180x180.png" sizes="180x180">
     <link rel="icon" type="image/png" href="https://about.night-works.jp/img/icon-192x192.png" sizes="192x192">
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     <script src="./js/scripts.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KWR8K5B1EY"></script>
@@ -27,7 +29,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
+
       gtag('config', 'G-KWR8K5B1EY');
     </script>
 
@@ -40,15 +42,15 @@
 
         gtag('config', 'AW-16728852600');
     </script>
-    
+
     <!-- TikTok Pixel Code Start -->
     <script>
         !function (w, d, t) {
         w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
         var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
         ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-        
-        
+
+
         ttq.load('CVBCBP3C77UANTV9KL20');
         ttq.page();
         }(window, document, 'ttq');
@@ -58,12 +60,20 @@
 </head>
 <body>
     <div class="floatingMenu">
-        <a href="https://night-works.jp/signup?type=worker" target="_blank">ワーカー登録はこちら</a>
-        <a href="https://night-works.jp/signup?type=employer" target="_blank">事業者登録はこちら</a>
+        <a href="https://night-works.jp/signup?type=worker" target="_blank">
+            <i class="fa-solid fa-user"></i>
+            <span>ワーカーで登録</span>
+        </a>
+        <a href="https://night-works.jp/signup?type=employer" target="_blank">
+            <i class="fa-solid fa-store"></i>
+            <span>事業者で登録</span>
+        </a>
     </div>
     <header>
         <div class="headerContents">
-            <a href="/"><img class="header-logo" src="./img/header-logo.png" alt="NightWorks"></a>
+            <a href="/">
+                <img src="./img/nighter/header-logo.png" alt="NightWorks" class="header-logo">
+            </a>
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -82,35 +92,58 @@
     </header>
     <main>
         <section id="top">
-            <div class="topContents">
-                <div class="topContentsLeft">
-                    <h2>高時給！ナイトワークの<b>スキマバイト！</b></h2>
-                    <img src="./img/top-logo.png" alt="NightWorks" class="top-logo">
-                    <img src="./img/mobile-top-logo.png" alt="NightWorks" class="mobile-top-logo">
-                    <h3>＃闇バイトやめてナイトワークやれ！！</h3>
-                    <img src="./img/features.png" alt="" class="features">
+            <div class="hero-content">
+                <div class="hero-title">
+                    <img src="./img/nighter/hero_title_pc.png" alt="NightWorks Title">
                 </div>
-                <picture>
-                    <img src="./img/mobile-features.png" alt="" class="mobile-features">
-                    <img src="./img/staff.png" alt="" class="staff">
-                    <img src="./img/mobile-staff.png" alt="" class="mobile-staff">
-                </picture>
+                <div class="hero-buttons">
+                <a href="#" class="hero-button">
+                    <i class="fa-solid fa-user"></i>
+                    <span>ワーカーで登録</span>
+                </a>
+                <a href="#" class="hero-button">
+                    <i class="fa-solid fa-store"></i>
+                    <span>事業者で登録</span>
+                </a>
+                </div>
             </div>
         </section>
         <section id="features">
             <div class="featuresContents">
                 <h2>ナイトワークスの特徴</h2>
-                <img src="./img/feature-1.png" alt="すぐ働ける">
-                <img src="./img/feature-2.png" alt="高時給">
-                <img src="./img/feature-3.png" alt="即日払い">
+                <div class="scroll-container">
+                    <div class="image-placeholder">
+                        <dotlottie-player src="https://assets-v2.lottiefiles.com/a/8be1adab-1a6f-49da-b9f6-599f55a0b78d/f8VIwqixxf.lottie" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
+                        <p>すぐ働ける</p>
+                    </div>
+                    <div class="image-placeholder">
+                        <dotlottie-player src="https://assets-v2.lottiefiles.com/a/850ba856-116f-11ee-b2c9-c3ba288cf2db/rJuNKNurqq.lottie" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
+                        <p>高時給</p>
+                    </div>
+                    <div class="image-placeholder">
+                        <dotlottie-player src="https://assets-v2.lottiefiles.com/a/8ba89446-d161-11ee-af12-b3fff5be9f15/KIwMHKf1Pp.lottie" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
+                        <p>即日払い</p>
+                    </div>
+                </div>
             </div>
         </section>
         <section id="examples">
             <div class="examplesContents">
                 <h2>仕事例</h2>
-                <img src="./img/bartender.png" alt="バーテンダー">
-                <img src="./img/nightclub-staff.png" alt="ナイトクラブスタッフ">
-                <img src="./img/boy.png" alt="ボーイ">
+                <div class="scroll-container">
+                    <div class="image-placeholder">
+                        <img src="img/nighter/bartender.jpg" alt="バーテンダー">
+                        <p>バーテンダー</p>
+                    </div>
+                    <div class="image-placeholder">
+                        <img src="img/nighter/barcoun.jpg" alt="バーカン">
+                        <p>バーカン</p>
+                    </div>
+                    <div class="image-placeholder">
+                        <img src="img/nighter/boy.jpg" alt="ボーイ（黒服）">
+                        <p>ボーイ（黒服）</p>
+                    </div>
+                </div>
             </div>
         </section>
         <section id="howto">
@@ -122,8 +155,8 @@
                     <p>■ 法令遵守の優良店舗が多数掲載！</p>
                     <p>■ 簡単入力ですぐに仕事が見つかる！</p>
                     <div class="howtoStep">
-                        <div>
-                            <img src="./img/howtoStepWorker-1.png" alt="">
+                        <div class="image-placeholder-step">
+                            <img src="img/nighter/howto-sample.jpg" alt="ステップ１">
                         </div>
                         <div>
                             <h5>ステップ１</h5>
@@ -135,13 +168,13 @@
                             <h5>ステップ２</h5>
                             <p>気になる求人の［詳細を見る］をタップします。</p>
                         </div>
-                        <div>
-                            <img src="./img/howtoStepWorker-2.png" alt="">
+                        <div class="image-placeholder-step">
+                            <img src="img/nighter/howto-sample.jpg" alt="ステップ２">
                         </div>
                     </div>
                     <div class="howtoStep">
-                        <div>
-                            <img src="./img/howtoStepWorker-3.png" alt="">
+                        <div class="image-placeholder-step">
+                            <img src="img/nighter/howto-sample.jpg" alt="ステップ３">
                         </div>
                         <div>
                             <h5>ステップ３</h5>
@@ -153,8 +186,8 @@
                             <h5>ステップ４</h5>
                             <p>採用が確定すると通知用メールアドレスにメールが届きます。<br>【応募履歴】からも確認可能です。</p>
                         </div>
-                        <div>
-                            <img src="./img/howtoStepWorker-4.png" alt="">
+                        <div class="image-placeholder-step">
+                            <img src="img/nighter/howto-sample.jpg" alt="ステップ４">
                         </div>
                     </div>
                 </div>
@@ -164,8 +197,8 @@
                     <p>■ 手が足りない時の強い味方！</p>
                     <p>■ リピートで安定したシフト管理も！</p>
                     <div class="howtoStep">
-                        <div>
-                            <img src="./img/howtoStepEmployer-1.png" alt="">
+                        <div class="image-placeholder-step">
+                            <img src="img/nighter/howto-sample.jpg" alt="ステップ１">
                         </div>
                         <div>
                             <h5>ステップ１</h5>
@@ -177,13 +210,13 @@
                             <h5>ステップ２</h5>
                             <p>［求人を作成］をタップします。</p>
                         </div>
-                        <div>
-                            <img src="./img/howtoStepEmployer-2.png" alt="">
+                        <div class="image-placeholder-step">
+                            <img src="img/nighter/howto-sample.jpg" alt="ステップ２">
                         </div>
                     </div>
                     <div class="howtoStep">
-                        <div>
-                            <img src="./img/howtoStepEmployer-3.png" alt="">
+                        <div class="image-placeholder-step">
+                            <img src="img/nighter/howto-sample.jpg" alt="ステップ３">
                         </div>
                         <div>
                             <h5>ステップ３</h5>
@@ -195,8 +228,8 @@
                             <h5>ステップ４</h5>
                             <p>求人に応募があると通知用メールアドレスにメールが届きます。<br>メール記載のURLから［承認する］をタップで採用確定です。<br><br>応募者とのコンタクトには電話やSMSをご利用ください。</p>
                         </div>
-                        <div>
-                            <img src="./img/howtoStepEmployer-4.png" alt="">
+                        <div class="image-placeholder-step">
+                            <img src="img/nighter/howto-sample.jpg" alt="ステップ４">
                         </div>
                     </div>
                 </div>
@@ -215,8 +248,8 @@
                             <button class="accordion-header">
                                 <span class="question-text">ナイトワークスって何？</span>
                                 <span class="accordion-icon">
-                                    <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"/></svg>
-                                    <svg class="icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
+                                    <i class="fa-solid fa-plus icon-plus"></i>
+                                    <i class="fa-solid fa-minus icon-minus"></i>
                                 </span>
                             </button>
                             <div class="accordion-content">
@@ -227,8 +260,8 @@
                             <button class="accordion-header">
                                 <span class="question-text">派遣アルバイトのような事前登録は必要？</span>
                                 <span class="accordion-icon">
-                                    <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"/></svg>
-                                    <svg class="icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
+                                    <i class="fa-solid fa-plus icon-plus"></i>
+                                    <i class="fa-solid fa-minus icon-minus"></i>
                                 </span>
                             </button>
                             <div class="accordion-content">
@@ -239,8 +272,8 @@
                             <button class="accordion-header">
                                 <span class="question-text">高校生でも働ける？</span>
                                 <span class="accordion-icon">
-                                    <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"/></svg>
-                                    <svg class="icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
+                                    <i class="fa-solid fa-plus icon-plus"></i>
+                                    <i class="fa-solid fa-minus icon-minus"></i>
                                 </span>
                             </button>
                             <div class="accordion-content">
@@ -251,8 +284,8 @@
                             <button class="accordion-header">
                                 <span class="question-text">お給料はどうやって受け取るの？</span>
                                 <span class="accordion-icon">
-                                    <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"/></svg>
-                                    <svg class="icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
+                                    <i class="fa-solid fa-plus icon-plus"></i>
+                                    <i class="fa-solid fa-minus icon-minus"></i>
                                 </span>
                             </button>
                             <div class="accordion-content">
@@ -263,12 +296,12 @@
                             <button class="accordion-header">
                                 <span class="question-text">本業にバレない？</span>
                                 <span class="accordion-icon">
-                                    <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"/></svg>
-                                    <svg class="icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
+                                    <i class="fa-solid fa-plus icon-plus"></i>
+                                    <i class="fa-solid fa-minus icon-minus"></i>
                                 </span>
                             </button>
                             <div class="accordion-content">
-                                <p>店舗によって契約形態が異なります。そのため<u>業務委託契約</u>の求人ならば影響がないと思われます。</p>
+                                <p>店舗によって契約形態が異なります。そのため<b>業務委託契約</b>の求人ならば影響がないと思われます。</p>
                             </div>
                         </div>
                     </div>
@@ -279,20 +312,20 @@
                             <button class="accordion-header">
                                 <span class="question-text">普通の求人サイトとの違いは？</span>
                                 <span class="accordion-icon">
-                                    <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"/></svg>
-                                    <svg class="icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
+                                    <i class="fa-solid fa-plus icon-plus"></i>
+                                    <i class="fa-solid fa-minus icon-minus"></i>
                                 </span>
                             </button>
                             <div class="accordion-content">
-                                <p><span style="color: orange;">ナイトワーク専門</span>で<span style="color: orange;">単発バイト特化</span>な点が通常の求人サイトとの違いになります。週末や繁忙期などの短期的なニーズにお応えできることが最大の利点です。</p>
+                                <p><b style="color: #00008b;">ナイトワーク専門</b>で<b style="color: #00008b;">単発バイト特化</b>な点が通常の求人サイトとの違いになります。週末や繁忙期などの短期的なニーズにお応えできることが最大の利点です。</p>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <button class="accordion-header">
                                 <span class="question-text">対応している業種は？</span>
                                 <span class="accordion-icon">
-                                    <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"/></svg>
-                                    <svg class="icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
+                                    <i class="fa-solid fa-plus icon-plus"></i>
+                                    <i class="fa-solid fa-minus icon-minus"></i>
                                 </span>
                             </button>
                             <div class="accordion-content">
@@ -303,8 +336,8 @@
                             <button class="accordion-header">
                                 <span class="question-text">ホステスやキャストも募集できる？</span>
                                 <span class="accordion-icon">
-                                    <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"/></svg>
-                                    <svg class="icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
+                                    <i class="fa-solid fa-plus icon-plus"></i>
+                                    <i class="fa-solid fa-minus icon-minus"></i>
                                 </span>
                             </button>
                             <div class="accordion-content">
@@ -315,8 +348,8 @@
                             <button class="accordion-header">
                                 <span class="question-text">一度採用したワーカーを長期的に採用（引き抜き採用）するのはOK？</span>
                                 <span class="accordion-icon">
-                                    <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"/></svg>
-                                    <svg class="icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
+                                    <i class="fa-solid fa-plus icon-plus"></i>
+                                    <i class="fa-solid fa-minus icon-minus"></i>
                                 </span>
                             </button>
                             <div class="accordion-content">
@@ -327,8 +360,8 @@
                             <button class="accordion-header">
                                 <span class="question-text">人柄が分からないので不安だけど大丈夫？</span>
                                 <span class="accordion-icon">
-                                    <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"/></svg>
-                                    <svg class="icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z" fill="currentColor"/></svg>
+                                    <i class="fa-solid fa-plus icon-plus"></i>
+                                    <i class="fa-solid fa-minus icon-minus"></i>
                                 </span>
                             </button>
                             <div class="accordion-content">
@@ -342,14 +375,16 @@
         <section id="news">
             <div class="newsContents">
                 <h2>ニュース</h2>
-                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">スキマバイトに闇バイト　働く前に知っておきたい9選 - 日本経済新聞 <a href="https://t.co/diYwn5K2LP">https://t.co/diYwn5K2LP</a></p>&mdash; ナイトワークス【夜のスキマバイト】 (@NightWorks_app) <a href="https://twitter.com/NightWorks_app/status/1912053280768729476?ref_src=twsrc%5Etfw">April 15, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">／<br>あなたの2025年の頑張りを振り返る❗️<br>💌Timee Look Back 2025公開✨<br>＼<br><br>2025年にタイミーを使っていただいた皆様へ<br>タイミーより感謝を込めて💛<br>あなただけの「はたらいた記録」をお届けします🎁<br><br>ぜひスクショしてあなたの頑張りをXでもシェアしてください🙌💛<a href="https://twitter.com/hashtag/TimeeLookBack2025?src=hash&amp;ref_src=twsrc%5Etfw">#TimeeLookBack2025</a> <a href="https://t.co/4TA00XJLbW">pic.twitter.com/4TA00XJLbW</a></p>&mdash; タイミー (@Timee_official) <a href="https://twitter.com/Timee_official/status/2004130007527182717?ref_src=twsrc%5Etfw">December 25, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
         </section>
     </main>
     <footer>
         <div class="footerContents">
             <div class="footerLeft">
-                <img src="./img/footer-logo.png" alt="#闇バイトやめてナイトワークやれ!! NightWorks">
+                <div class="footer-logo-placeholder">
+                    <img src="img/nighter/footer-logo.png" alt="NightWorks">
+                </div>
                 <a href="https://night-works.jp/workers/login" target="_blank">ワーカーログイン</a>
                 <a href="https://night-works.jp/employers/login" target="_blank">事業者ログイン</a>
             </div>
