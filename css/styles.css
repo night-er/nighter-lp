@@ -223,9 +223,9 @@ header.scrolled {
 }
 
 .headerContents {
-    width: 90%;
+    width: 95%;
     height: 100%;
-    max-width: 1024px;
+    max-width: 1200px;
     display: flex;
     margin: 0 auto;
     justify-content: space-between;
@@ -395,8 +395,12 @@ header.scrolled .hamburger span {
 
 /* トップセクション */
 #top {
+    height: 100vh;
     min-height: 600px;
-    background: url('../img/nighter/hero_pc.jpg') center/cover no-repeat;
+    background-image: url('../img/nighter/hero_pc.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 140px 0 140px 0;
     position: relative;
     overflow: hidden;
@@ -580,7 +584,12 @@ header.scrolled .hamburger span {
 
 @media screen and (max-width: 959px) {
     #top {
-        background: url('../img/nighter/hero_pc.jpg') center/cover no-repeat;
+        height: auto;
+        min-height: 100vh;
+        background-image: url('../img/nighter/hero_pc.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
         padding: 100px 0;
     }
 
