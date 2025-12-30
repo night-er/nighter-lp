@@ -222,6 +222,11 @@ header.scrolled {
     box-shadow: 0 3px 12px rgba(0, 0, 139, 0.3);
 }
 
+.subpage header {
+    background-color: #00008b;
+    box-shadow: 0 3px 12px rgba(0, 0, 139, 0.3);
+}
+
 .headerContents {
     width: 95%;
     height: 100%;
@@ -1326,54 +1331,61 @@ footer {
     }
 }
 
-/* その他ページのトップバナー */
-#topBanner {
-    min-height: 288px;
-    margin-top: 80px;
-    background: linear-gradient(135deg, #00008b 0%, #00008b 100%);
+/* パンくずリスト */
+.breadcrumb {
+    max-width: 1024px;
+    margin: 80px auto 20px auto;
+    padding: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+    gap: 10px;
+    font-size: 14px;
+    color: #666;
 }
 
-#topBanner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
-    pointer-events: none;
+.breadcrumb a {
+    color: #00008b;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.topBannerContents {
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1;
+.breadcrumb a:hover {
+    color: #00006b;
+    text-decoration: underline;
 }
 
-.topBannerContents h2 {
-    color: white;
-    font-size: 48px;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+.breadcrumb span {
+    color: #999;
 }
 
 @media screen and (max-width: 768px) {
-    .topBannerContents h2 {
+    .breadcrumb {
+        font-size: 12px;
+        padding: 15px 20px;
+    }
+}
+
+/* ページタイトル */
+.page-title {
+    font-size: 36px;
+    color: #00008b;
+    margin-bottom: 40px;
+    font-weight: bold;
+    border-bottom: 3px solid #00008b;
+    padding-bottom: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .page-title {
         font-size: 28px;
+        margin-bottom: 30px;
     }
 }
 
 /* 運営情報 */
 #info {
-    background: linear-gradient(135deg, #00008b 0%, #00008b 100%);
-    min-height: calc(100vh - 80px);
-    padding: 80px 20px;
+    background: #fff;
+    padding: 0 20px 80px;
 }
 
 .infoContents {
@@ -1383,6 +1395,22 @@ footer {
     padding: 60px;
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+@media screen and (max-width: 768px) {
+    .infoContents {
+        padding: 30px 20px;
+    }
+
+    .infoContents dl {
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    .infoContents dt {
+        min-width: auto;
+        margin-bottom: 8px;
+    }
 }
 
 .infoContents dl {
@@ -1402,11 +1430,21 @@ footer {
     color: #333;
 }
 
+.googleMap {
+    margin-top: 20px;
+}
+
+.googleMap iframe {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+}
+
 /* お問い合わせ */
 #contact {
-    background: linear-gradient(135deg, #00008b 0%, #00008b 100%);
-    min-height: calc(100vh - 80px);
-    padding: 80px 20px;
+    background: #fff;
+    padding: 0 20px 80px;
 }
 
 .contactContents {
@@ -1418,11 +1456,21 @@ footer {
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
 
+@media screen and (max-width: 768px) {
+    .contactContents {
+        padding: 30px 20px;
+    }
+}
+
+.contactContents iframe {
+    max-width: 100%;
+    width: 100%;
+}
+
 /* 利用規約・プライバシーポリシー */
 #terms, #privacy {
-    background: linear-gradient(135deg, #00008b 0%, #00008b 100%);
-    min-height: calc(100vh - 80px);
-    padding: 80px 20px;
+    background: #fff;
+    padding: 0 20px 80px;
 }
 
 .termsContents, .privacyContents {
@@ -1435,14 +1483,46 @@ footer {
     color: #333;
 }
 
+@media screen and (max-width: 768px) {
+    .termsContents, .privacyContents {
+        padding: 30px 20px;
+    }
+
+    .termsContents h2, .privacyContents h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .termsContents h3, .privacyContents h3 {
+        font-size: 18px;
+    }
+
+    .termsContents h4, .privacyContents h4 {
+        font-size: 16px;
+    }
+}
+
 .termsContents h2, .privacyContents h2 {
     color: #00008b;
     border-bottom: 2px solid #00008b;
     padding-bottom: 10px;
+    margin-top: 40px;
     margin-bottom: 30px;
+    text-align: left;
 }
 
-.emphasis {
-    color: #00008b;
-    font-weight: bold;
+.termsContents ul, .termsContents ol, .privacyContents ul, .privacyContents ol {
+    list-style-position: outside;
+    padding-left: 1.5em;
+}
+
+.termsContents li, .privacyContents li {
+    margin-bottom: 10px;
+    padding-left: 0.5em;
+}
+
+.termsContents ul ul, .termsContents ol ol, .termsContents ul ol, .termsContents ol ul,
+.privacyContents ul ul, .privacyContents ol ol, .privacyContents ul ol, .privacyContents ol ul {
+    margin-left: 1em;
+    margin-top: 10px;
 }

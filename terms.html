@@ -4,20 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/nighter/icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/nighter/icon.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="img/nighter/icon.png" sizes="192x192">
     <script src="./js/scripts.js"></script>
     <title>ナイター｜利用規約</title>
 </head>
-<body>
+<body class="subpage">
     <div class="floatingMenu">
-        <a href="https://night-works.jp/signup?type=worker" target="_blank">ワーカーで登録</a>
-        <a href="https://night-works.jp/signup?type=employer" target="_blank">事業者で登録</a>
+        <a href="https://night-works.jp/signup?type=worker" target="_blank">
+            <i class="fa-solid fa-user"></i>
+            <span>ワーカーで登録</span>
+        </a>
+        <a href="https://night-works.jp/signup?type=employer" target="_blank">
+            <i class="fa-solid fa-store"></i>
+            <span>事業者で登録</span>
+        </a>
     </div>
     <header>
         <div class="headerContents">
-            <a href="/"><img class="header-logo" src="./img/header-logo.png" alt="Nighter"></a>
+            <a href="/">
+                <img src="./img/nighter/header-logo.png" alt="Nighter" class="header-logo">
+            </a>
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -35,23 +47,23 @@
         </div>
     </header>
     <main>
-        <section id="topBanner">
-            <div class="topBannerContents">
-                <h2>利用規約</h2>
-                <img src="./img/topBanner.png" alt="">
-            </div>
-        </section>
+        <nav class="breadcrumb">
+            <a href="/">トップページ</a>
+            <span>&gt;</span>
+            <span>利用規約</span>
+        </nav>
         <section id="terms">
             <div class="termsContents">
+                <h1 class="page-title">Terms</h1>
                 <h2>1. はじめに</h2>
                 <p>本利用規約（以下「本規約」といいます）は、ナイター / Nighter（以下「本サービス」といいます）の利用条件を定めるものです。ユーザーの皆様には、本規約に同意いただいた上で本サービスをご利用いただきます。</p>
                 
                 <h2>2. 定義</h2>
                 <p>本規約において使用する用語の定義は、以下の通りとします。</p>
                 <ul>
-                    <li>「ユーザー」とは、本サービスにユーザー登録を行った個人または法人を指します。</li>
-                    <li>「事業者」とは、ナイトワーク関連の事業を営み、本サービスを通じてワーカーを募集する法人または個人を指します。</li>
-                    <li>「ワーカー」とは、本サービスを通じて仕事を探す個人を指します。</li>
+                    <li>ユーザーとは、本サービスにユーザー登録を行った個人または法人を指します。</li>
+                    <li>事業者とは、ナイトワーク関連の事業を営み、本サービスを通じてワーカーを募集する法人または個人を指します。</li>
+                    <li>ワーカーとは、本サービスを通じて仕事を探す個人を指します。</li>
                 </ul>
 
                 <h2>3. ユーザー登録</h2>
@@ -164,7 +176,9 @@
     <footer>
         <div class="footerContents">
             <div class="footerLeft">
-                <img src="./img/footer-logo.png" alt="Nighter">
+                <div class="footer-logo-placeholder">
+                    <img src="img/nighter/footer-logo.png" alt="Nighter">
+                </div>
                 <a href="https://night-works.jp/workers/login" target="_blank">ワーカーログイン</a>
                 <a href="https://night-works.jp/employers/login" target="_blank">事業者ログイン</a>
             </div>
