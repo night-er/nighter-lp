@@ -222,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // スクロール位置に応じてアクティブなドットを更新
         function updateIndicators() {
-            const containerWidth = container.offsetWidth;
             const scrollLeft = container.scrollLeft;
             const itemWidth = items[0].offsetWidth;
             const gap = 30; // CSSのgapと同じ値

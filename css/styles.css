@@ -413,7 +413,7 @@ header.scrolled .hamburger span {
     height: 100vh;
     min-height: 600px;
     background-image: url('../img/nighter/hero-bg-pc.jpg');
-    background-position: center;
+    background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
     padding: 140px 0 140px 0;
@@ -426,7 +426,7 @@ header.scrolled .hamburger span {
 .hero-content {
     position: absolute;
     left: 0;
-    top: 200px;
+    top: 230px;
     bottom: 140px;
     width: 50%;
     display: flex;
@@ -606,7 +606,7 @@ header.scrolled .hamburger span {
         height: auto;
         min-height: 100vh;
         background-image: url('../img/nighter/hero-bg-sp.jpg');
-        background-position: center;
+        background-position: center top;
         background-size: cover;
         background-repeat: no-repeat;
         display: flex;
@@ -688,7 +688,7 @@ header.scrolled .hamburger span {
 /* iPad mini〜iPad Pro (768px-1024px) 専用スタイル */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     #top {
-        background-position: center calc(50% + 150px);
+        background-position: center top;
     }
 }
 
