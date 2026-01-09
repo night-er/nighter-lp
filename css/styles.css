@@ -758,24 +758,43 @@ section h2::after {
     padding: 20px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    /* スクロールバーを非表示 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .scroll-container::-webkit-scrollbar {
-    height: 8px;
+    display: none;
 }
 
-.scroll-container::-webkit-scrollbar-track {
-    background: rgba(0,0,139,0.1);
-    border-radius: 4px;
+/* ドットインジケーター */
+.scroll-indicators {
+    display: none; /* PCでは非表示 */
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 0 10px 0;
 }
 
-.scroll-container::-webkit-scrollbar-thumb {
+.indicator-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0,0,139,0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.indicator-dot.active {
     background: #00008b;
-    border-radius: 4px;
+    transform: scale(1.3);
 }
 
-.scroll-container::-webkit-scrollbar-thumb:hover {
-    background: #00008b;
+/* タブレット・モバイルでドットインジケーターを表示 */
+@media screen and (max-width: 1024px) {
+    .scroll-indicators {
+        display: flex;
+    }
 }
 
 /* 特徴セクション */
@@ -880,16 +899,12 @@ section h2::after {
     justify-content: flex-start;
 }
 
-#examples .scroll-container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.2);
+#examples .indicator-dot {
+    background: rgba(255, 255, 255, 0.3);
 }
 
-#examples .scroll-container::-webkit-scrollbar-thumb {
+#examples .indicator-dot.active {
     background: white;
-}
-
-#examples .scroll-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.8);
 }
 
 /* 利用方法セクション */

@@ -207,4 +207,58 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 0);
         }
     }
+
+    // ドットインジケーター機能
+    const scrollContainers = document.querySelectorAll('.scroll-container[data-scroll-indicator]');
+
+    scrollContainers.forEach(container => {
+        const indicatorId = container.dataset.scrollIndicator;
+        const indicators = document.querySelector(`.scroll-indicators[data-indicators="${indicatorId}"]`);
+
+        if (!indicators) return;
+
+        const dots = indicators.querySelectorAll('.indicator-dot');
+        const items = container.querySelectorAll('.image-placeholder');
+
+        // スクロール位置に応じてアクティブなドットを更新
+        function updateIndicators() {
+            const containerWidth = container.offsetWidth;
+            const scrollLeft = container.scrollLeft;
+            const itemWidth = items[0].offsetWidth;
+            const gap = 30; // CSSのgapと同じ値
+
+            // 現在のアイテムインデックスを計算
+            const currentIndex = Math.round(scrollLeft / (itemWidth + gap));
+
+            // すべてのドットを非アクティブにして、現在のドットだけアクティブに
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // スクロールイベントをthrottleで最適化
+        const throttledUpdateIndicators = throttle(updateIndicators);
+        container.addEventListener('scroll', throttledUpdateIndicators, { passive: true });
+
+        // ドットをクリックして該当のアイテムにスクロール
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                const itemWidth = items[0].offsetWidth;
+                const gap = 30; // CSSのgapと同じ値
+                const scrollPosition = index * (itemWidth + gap);
+
+                container.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 初期状態を設定
+        updateIndicators();
+    });
 });
