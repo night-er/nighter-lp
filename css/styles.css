@@ -96,55 +96,6 @@ body {
 .scroll-container .scroll-animate:nth-child(3) { animation-delay: 0.3s; }
 .scroll-container .scroll-animate:nth-child(4) { animation-delay: 0.45s; }
 
-/* フローティングメニュー */
-.floatingMenu {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 100;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 -4px 12px rgba(0, 0, 139, 0.3);
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-}
-
-.floatingMenu.visible {
-    transform: translateY(0);
-}
-
-.floatingMenu a {
-    width: 100%;
-    background-color: #00008b;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    height: 60px;
-    border: 1px solid lightgray;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.floatingMenu a:hover {
-    background-color: #00006b;
-    color: white;
-}
-
-.floatingMenu a i {
-    font-size: 28px;
-}
-
-@media screen and (max-width: 768px) {
-    .floatingMenu a {
-        font-size: 16px;
-        padding: 1em 0;
-    }
-}
-
 /* ヘッダー */
 header {
     background-color: transparent;
@@ -229,36 +180,6 @@ header.scrolled .nav-item:hover {
 
 .nav-item.current::after {
     transform: scaleX(1);
-}
-
-.signup {
-    background-color: #fed700;
-    color: #00008b;
-    border-radius: 9999px;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
-}
-
-.signup:hover {
-    background-color: #e6c200;
-    color: #00008b;
-}
-
-.login {
-    background-color: white;
-    color: #00008b;
-    border-radius: 9999px;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
-}
-
-.login:hover {
-    background-color: #cccccc;
-    color: #00008b;
 }
 
 .hamburger {
@@ -355,19 +276,6 @@ header.scrolled .hamburger span {
         font-weight: bold;
     }
 
-    .login {
-        margin-top: 1rem;
-        text-align: center;
-        background-color: #00008b;
-        color: white;
-    }
-
-    .signup {
-        margin-top: 0.5rem;
-        text-align: center;
-        background-color: #fed700;
-        color: #00008b;
-    }
 }
 
 /* トップセクション */
@@ -1121,25 +1029,6 @@ footer {
     margin: 0 auto;
 }
 
-.footerLeft a {
-    display: block;
-    margin: 20px auto;
-    max-width: 300px;
-    padding: 15px 30px;
-    background: white;
-    color: #00008b;
-    text-decoration: none;
-    border-radius: 9999px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.footerLeft a:hover {
-    background: #cccccc;
-    color: #00008b;
-}
-
 .footerRight {
     flex: 1;
     text-align: center;
@@ -1190,10 +1079,6 @@ footer {
     .footerContents {
         flex-direction: column;
         gap: 40px;
-    }
-
-    .footerLeft a {
-        font-size: 16px;
     }
 
     .footerRight nav a {
