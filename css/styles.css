@@ -464,6 +464,31 @@ header.scrolled .hamburger span {
     }
 }
 
+/* ヒーローセクション: iPhone SEなど幅375px以下で少し縮小 */
+@media screen and (max-width: 375px) {
+    .hero-owl {
+        width: 72px;
+        height: 72px;
+    }
+
+    .hero-copy-sub {
+        font-size: 32px;
+    }
+
+    .hero-copy-main {
+        font-size: 68px;
+    }
+
+    .hero-store-badges {
+        margin-top: 18px;
+        gap: 8px;
+    }
+
+    .store-badge img {
+        height: 34px;
+    }
+}
+
 /* セクション共通スタイル */
 section {
     padding: 100px 0;
