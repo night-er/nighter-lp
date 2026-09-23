@@ -133,6 +133,11 @@ header.scrolled {
     height: 100%;
 }
 
+#nav-menu {
+    display: flex;
+    align-items: center;
+}
+
 .header-logo {
     height: 33px;
     width: auto;
@@ -180,6 +185,19 @@ header.scrolled .nav-item:hover {
 
 .nav-item.current::after {
     transform: scaleX(1);
+}
+
+.header-store-badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 32px;
+}
+
+.header-store-badges .store-badge img {
+    height: 30px;
+    width: auto;
+    display: block;
 }
 
 .hamburger {
@@ -231,6 +249,16 @@ header.scrolled .hamburger span {
         display: block;
     }
 
+    .header-store-badges {
+        margin-left: 0;
+        margin-top: 2rem;
+        justify-content: center;
+    }
+
+    .header-store-badges .store-badge img {
+        height: 40px;
+    }
+
     #nav-menu {
         position: fixed;
         right: -100%;
@@ -241,6 +269,7 @@ header.scrolled .hamburger span {
         transition: 0.3s;
         display: flex;
         flex-direction: column;
+        align-items: stretch;
         padding: 2rem;
         overflow-y: auto;
         box-shadow: -4px 0 12px rgba(0, 0, 139, 0.2);
@@ -263,7 +292,7 @@ header.scrolled .hamburger span {
     }
 
     .nav-item.current {
-        color: #fed700;
+        color: #e0b400;
         font-weight: bold;
     }
 
@@ -272,7 +301,7 @@ header.scrolled .hamburger span {
     }
 
     header.scrolled .nav-item.current {
-        color: #fed700;
+        color: #e0b400;
         font-weight: bold;
     }
 
@@ -1129,7 +1158,7 @@ footer {
 }
 
 .footer-logo-placeholder {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .footer-logo-placeholder img {
@@ -1138,6 +1167,18 @@ footer {
     height: auto;
     display: block;
     margin: 0 auto;
+}
+
+.footer-store-badges {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.footer-store-badges .store-badge img {
+    height: 44px;
+    width: auto;
+    display: block;
 }
 
 .footerRight {
