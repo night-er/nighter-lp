@@ -368,18 +368,23 @@ header.scrolled .hamburger span {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 
+/* 1文字ずつ均等配置して"Nighter"の幅に揃える（傍点が文字の中央に付くよう justify ではなく flex を使う） */
 .hero-copy-sub {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     width: 100%;
-    font-size: 42px;
+    font-size: 38px;
     font-weight: 400;
-    text-align: justify;
-    text-align-last: justify;
-    text-justify: inter-character;
 }
 
 .hero-copy-accent {
+    display: contents;
     color: #fed700;
+    -webkit-text-emphasis: filled dot;
+    text-emphasis: filled dot;
+    -webkit-text-emphasis-position: over right;
+    text-emphasis-position: over right;
 }
 
 .hero-copy-main {
@@ -469,17 +474,11 @@ header.scrolled .hamburger span {
     }
 
     .hero-copy {
-        display: block;
-        width: auto;
         margin-top: 16px;
     }
 
     .hero-copy-sub {
-        width: auto;
-        font-size: 37.5px;
-        text-align: center;
-        text-align-last: auto;
-        text-justify: auto;
+        font-size: 32px;
     }
 
     .hero-copy-main {
@@ -505,7 +504,7 @@ header.scrolled .hamburger span {
     }
 
     .hero-copy-sub {
-        font-size: 32px;
+        font-size: 27px;
     }
 
     .hero-copy-main {
