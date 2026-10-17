@@ -292,8 +292,10 @@ header.scrolled .hamburger span {
     }
 
     .nav-item.current {
-        color: #e0b400;
+        color: #fed700;
         font-weight: bold;
+        -webkit-text-stroke: 2px #00008b;
+        paint-order: stroke fill;
     }
 
     header.scrolled .nav-item {
@@ -301,8 +303,10 @@ header.scrolled .hamburger span {
     }
 
     header.scrolled .nav-item.current {
-        color: #e0b400;
+        color: #fed700;
         font-weight: bold;
+        -webkit-text-stroke: 2px #00008b;
+        paint-order: stroke fill;
     }
 
 }
