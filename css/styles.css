@@ -138,7 +138,7 @@ header.scrolled {
     align-items: center;
 }
 
-.header-logo {
+.headerContents .logo {
     height: 33px;
     width: auto;
     transition: all 0.3s ease;
@@ -146,7 +146,7 @@ header.scrolled {
     margin-top: 6px;
 }
 
-.header-logo:hover {
+.headerContents .logo:hover {
     transform: scale(1.05);
     filter: brightness(1.1);
 }
@@ -187,17 +187,26 @@ header.scrolled .nav-item:hover {
     transform: scaleX(1);
 }
 
-.header-store-badges {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 32px;
+/* 「店舗様はこちら」ボタン（ヘッダー・フッター共通） */
+.business-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 999px;
+    background-color: #fff;
+    color: #00008b;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
 }
 
-.header-store-badges .store-badge img {
-    height: 30px;
-    width: auto;
-    display: block;
+.business-btn:hover {
+    opacity: 0.85;
+}
+
+#nav-menu .business-btn {
+    margin-left: 32px;
 }
 
 .hamburger {
@@ -250,14 +259,13 @@ header.scrolled .hamburger span {
         display: block;
     }
 
-    .header-store-badges {
-        margin-left: 0;
-        margin-top: 2rem;
-        justify-content: center;
-    }
-
-    .header-store-badges .store-badge img {
-        height: 40px;
+    #nav-menu .business-btn {
+        margin: 2rem 0 0;
+        padding: 14px 20px;
+        background-color: #00008b;
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
     }
 
     #nav-menu {
@@ -295,8 +303,6 @@ header.scrolled .hamburger span {
     .nav-item.current {
         color: #fed700;
         font-weight: bold;
-        -webkit-text-stroke: 2px #00008b;
-        paint-order: stroke fill;
     }
 
     header.scrolled .nav-item {
@@ -306,8 +312,6 @@ header.scrolled .hamburger span {
     header.scrolled .nav-item.current {
         color: #fed700;
         font-weight: bold;
-        -webkit-text-stroke: 2px #00008b;
-        paint-order: stroke fill;
     }
 
 }
@@ -376,7 +380,7 @@ header.scrolled .hamburger span {
     align-items: baseline;
     width: 100%;
     font-size: 38px;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 .hero-copy-accent {
@@ -479,7 +483,7 @@ header.scrolled .hamburger span {
     }
 
     .hero-copy-sub {
-        font-size: 32px;
+        font-size: 30px;
     }
 
     .hero-copy-main {
@@ -505,7 +509,7 @@ header.scrolled .hamburger span {
     }
 
     .hero-copy-sub {
-        font-size: 27px;
+        font-size: 25px;
     }
 
     .hero-copy-main {
@@ -1214,12 +1218,51 @@ footer {
     margin-bottom: 30px;
 }
 
-.footer-logo-placeholder img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
+/* ヒーローと同じく1文字ずつ均等配置し、ロゴの幅に揃える */
+.footer-copy {
+    display: inline-block;
+    margin: 0;
+    color: #fff;
+}
+
+.footer-copy-sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.footer-copy-accent {
+    display: contents;
+    color: #fed700;
+    -webkit-text-emphasis: filled dot;
+    text-emphasis: filled dot;
+    -webkit-text-emphasis-position: over right;
+    text-emphasis-position: over right;
+}
+
+/* ロゴ画像（603×140）の高さ。縦並び時の「店舗様はこちら」の幅計算にも使う */
+footer {
+    --footer-logo-height: 64px;
+}
+
+.footer-copy .logo {
+    height: var(--footer-logo-height);
+    width: auto;
     display: block;
-    margin: 0 auto;
+    margin-top: 10px;
+}
+
+/* iPhone SEなど幅375px以下で少し縮小 */
+@media screen and (max-width: 375px) {
+    .footer-copy-sub {
+        font-size: 19px;
+    }
+
+    footer {
+        --footer-logo-height: 56px;
+    }
 }
 
 .footer-store-badges {
@@ -1234,18 +1277,18 @@ footer {
     display: block;
 }
 
-.footerRight {
+.footerCenter {
     flex: 1;
     text-align: center;
 }
 
-.footerRight h2 {
+.footerCenter h2 {
     color: white;
     margin-bottom: 30px;
     font-size: 24px;
 }
 
-.footerRight nav a {
+.footerCenter nav a {
     display: block;
     margin: 15px 0;
     color: white;
@@ -1256,7 +1299,7 @@ footer {
     position: relative;
 }
 
-.footerRight nav a::after {
+.footerCenter nav a::after {
     content: '';
     position: absolute;
     bottom: 3px;
@@ -1268,12 +1311,40 @@ footer {
     transition: transform 0.3s ease-in-out;
 }
 
-.footerRight nav a:hover {
+.footerCenter nav a:hover {
     color: #cccccc;
 }
 
-.footerRight nav a.current::after {
+.footerCenter nav a.current::after {
     transform: scaleX(1);
+}
+
+.footerRight {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerRight .business-btn {
+    width: 100%;
+    padding: 14px 32px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* 3列が収まらない幅（ハンバーガーメニューと同じ1024px以下）では縦に3行で並べる */
+@media screen and (max-width: 1024px) {
+    .footerContents {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    /* ロゴ画像と同じ幅にする */
+    .footerRight .business-btn {
+        width: calc(var(--footer-logo-height) * 603 / 140);
+        padding: 14px 0;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -1281,12 +1352,7 @@ footer {
         padding: 40px 0 100px 0;
     }
 
-    .footerContents {
-        flex-direction: column;
-        gap: 40px;
-    }
-
-    .footerRight nav a {
+    .footerCenter nav a {
         font-size: 16px;
     }
 }
