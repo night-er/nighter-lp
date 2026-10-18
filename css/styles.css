@@ -235,7 +235,8 @@ header.scrolled .hamburger span {
     transform: translateY(-9px) rotate(-45deg);
 }
 
-@media screen and (max-width: 768px) {
+/* ナビ7項目が1行に収まらない幅（〜990px）ではハンバーガーメニューに切り替える */
+@media screen and (max-width: 1024px) {
     header {
         background-color: #00008b;
         box-shadow: 0 3px 12px rgba(0, 0, 139, 0.3);
