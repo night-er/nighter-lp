@@ -626,33 +626,82 @@ section h2::after {
     }
 }
 
+/* ナイターとはセクション */
+#about {
+    background: #fff;
+}
+
+.aboutContents {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.aboutContents h2 {
+    color: #00008b;
+}
+
+.about-lead {
+    font-size: 26px;
+    font-weight: bold;
+    color: #00008b;
+    margin-bottom: 24px;
+}
+
+/* 意味の切れ目でだけ折り返す */
+.about-lead span {
+    display: inline-block;
+}
+
+.about-lead em {
+    font-style: normal;
+    -webkit-text-emphasis: filled dot #fed700;
+    text-emphasis: filled dot #fed700;
+}
+
+.about-text {
+    font-size: 16px;
+    line-height: 2;
+}
+
+@media screen and (max-width: 768px) {
+    .about-lead {
+        font-size: 20px;
+    }
+
+    .about-text br {
+        display: none;
+    }
+}
+
 /* 特徴セクション */
-#features {
+#feature {
     background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
 }
 
-.featuresContents {
+.featureContents {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.featuresContents h2 {
+.featureContents h2 {
     color: #00008b;
 }
 
-#features .image-placeholder {
+#feature .image-placeholder {
     background: transparent;
     border: 3px solid #00008b;
     box-shadow: none;
 }
 
-#features .image-placeholder:hover {
+#feature .image-placeholder:hover {
     transform: none;
     box-shadow: none;
 }
 
-#features .image-placeholder p {
+#feature .image-placeholder p {
     font-size: 24px;
     border-top: 2px solid #00008b;
     padding-top: 10px;
@@ -663,18 +712,18 @@ section h2::after {
     text-align: center;
 }
 
-#features .scroll-container {
+#feature .scroll-container {
     justify-content: center;
 }
 
 @media screen and (max-width: 768px) {
-    #features .scroll-container {
+    #feature .scroll-container {
         justify-content: flex-start;
         scroll-snap-type: x mandatory;
         padding-inline: calc((100% - 280px) / 2);
     }
 
-    #features .image-placeholder {
+    #feature .image-placeholder {
         scroll-snap-align: center;
         flex-shrink: 0;
         width: 280px;
@@ -682,25 +731,25 @@ section h2::after {
 }
 
 /* 仕事例セクション */
-#examples {
+#job-examples {
     background: linear-gradient(135deg, #00008b 0%, #00008b 100%);
 }
 
-.examplesContents {
+.jobExamplesContents {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.examplesContents h2 {
+.jobExamplesContents h2 {
     color: white;
 }
 
-.examplesContents h2::after {
+.jobExamplesContents h2::after {
     background: linear-gradient(90deg, transparent, white, transparent);
 }
 
-#examples .image-placeholder {
+#job-examples .image-placeholder {
     background: transparent;
     border: 3px solid #fff;
     box-shadow: none;
@@ -708,16 +757,16 @@ section h2::after {
     flex-shrink: 0;
 }
 
-#examples .image-placeholder:hover {
+#job-examples .image-placeholder:hover {
     transform: none;
     box-shadow: none;
 }
 
-#examples .image-placeholder span {
+#job-examples .image-placeholder span {
     color: rgba(255,255,255,0.7);
 }
 
-#examples .image-placeholder img {
+#job-examples .image-placeholder img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -725,7 +774,7 @@ section h2::after {
     margin-bottom: 0;
 }
 
-#examples .image-placeholder p {
+#job-examples .image-placeholder p {
     color: white;
     font-size: 24px;
     border-top: 2px solid #fff;
@@ -738,42 +787,42 @@ section h2::after {
     white-space: nowrap;
 }
 
-#examples .scroll-container {
+#job-examples .scroll-container {
     justify-content: center;
 }
 
 @media screen and (max-width: 768px) {
-    #examples .scroll-container {
+    #job-examples .scroll-container {
         justify-content: flex-start;
         scroll-snap-type: x mandatory;
         padding-inline: calc((100% - 280px) / 2);
     }
 
-    #examples .image-placeholder {
+    #job-examples .image-placeholder {
         scroll-snap-align: center;
     }
 }
 
-#examples .indicator-dot {
+#job-examples .indicator-dot {
     background: rgba(255, 255, 255, 0.3);
 }
 
-#examples .indicator-dot.active {
+#job-examples .indicator-dot.active {
     background: white;
 }
 
 /* 利用方法セクション */
-#howto {
+#how-to {
     background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
 }
 
-.howtoContents {
+.howToContents {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.howtoContents h2 {
+.howToContents h2 {
     color: #00008b;
 }
 
@@ -1011,17 +1060,17 @@ section h2::after {
 }
 
 /* ニュースセクション */
-#news {
+#notice {
     background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
 }
 
-.newsContents {
+.noticeContents {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.newsContents h2 {
+.noticeContents h2 {
     color: #00008b;
 }
 
