@@ -532,6 +532,7 @@ section {
 }
 
 section h2 {
+    color: #00008b;
     font-size: 36px;
     text-align: center;
     margin-bottom: 60px;
@@ -548,6 +549,27 @@ section h2::after {
     width: 80px;
     height: 4px;
     background: linear-gradient(90deg, transparent, #00008b, transparent);
+}
+
+/* 紺背景のセクション（白背景と交互に配置する） */
+section.section-dark {
+    background: #00008b;
+}
+
+section.section-dark h2 {
+    color: #fff;
+}
+
+section.section-dark h2::after {
+    background: linear-gradient(90deg, transparent, white, transparent);
+}
+
+.section-dark .indicator-dot {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.section-dark .indicator-dot.active {
+    background: white;
 }
 
 /* プレースホルダー共通スタイル */
@@ -632,19 +654,11 @@ section h2::after {
 }
 
 /* ナイターとはセクション */
-#about {
-    background: #fff;
-}
-
 .aboutContents {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 20px;
     text-align: center;
-}
-
-.aboutContents h2 {
-    color: #00008b;
 }
 
 .about-lead {
@@ -681,23 +695,15 @@ section h2::after {
 }
 
 /* 特徴セクション */
-#feature {
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-}
-
 .featureContents {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.featureContents h2 {
-    color: #00008b;
-}
-
 #feature .image-placeholder {
-    background: transparent;
-    border: 3px solid #00008b;
+    background: #fff;
+    border: 3px solid #fff;
     box-shadow: none;
 }
 
@@ -736,27 +742,15 @@ section h2::after {
 }
 
 /* 仕事例セクション */
-#job-examples {
-    background: linear-gradient(135deg, #00008b 0%, #00008b 100%);
-}
-
 .jobExamplesContents {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.jobExamplesContents h2 {
-    color: white;
-}
-
-.jobExamplesContents h2::after {
-    background: linear-gradient(90deg, transparent, white, transparent);
-}
-
 #job-examples .image-placeholder {
     background: transparent;
-    border: 3px solid #fff;
+    border: 3px solid #00008b;
     box-shadow: none;
     width: 280px;
     flex-shrink: 0;
@@ -765,10 +759,6 @@ section h2::after {
 #job-examples .image-placeholder:hover {
     transform: none;
     box-shadow: none;
-}
-
-#job-examples .image-placeholder span {
-    color: rgba(255,255,255,0.7);
 }
 
 #job-examples .image-placeholder img {
@@ -780,9 +770,8 @@ section h2::after {
 }
 
 #job-examples .image-placeholder p {
-    color: white;
     font-size: 24px;
-    border-top: 2px solid #fff;
+    border-top: 2px solid #00008b;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-top: 0;
@@ -808,27 +797,11 @@ section h2::after {
     }
 }
 
-#job-examples .indicator-dot {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-#job-examples .indicator-dot.active {
-    background: white;
-}
-
 /* 利用方法セクション */
-#how-to {
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-}
-
 .howToContents {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-.howToContents h2 {
-    color: #00008b;
 }
 
 .howtoUser {
@@ -845,9 +818,11 @@ section h2::after {
     box-shadow: 0 12px 32px rgba(0,0,139,0.25);
 }
 
+/* 紺背景のセクション上でカードの輪郭が消えないよう、見出し帯は白地＋下線にする */
 .howtoUser h3 {
-    background: linear-gradient(135deg, #00008b 0%, #00008b 100%);
-    color: white;
+    background: #fff;
+    color: #00008b;
+    border-bottom: 2px solid rgba(0, 0, 139, 0.15);
     padding: 20px;
     margin: -40px -40px 30px -40px;
     border-radius: 16px 16px 0 0;
@@ -958,30 +933,19 @@ section h2::after {
 }
 
 /* よくある質問セクション */
-#faq {
-    background: linear-gradient(135deg, #00008b 0%, #00008b 100%);
-}
-
 .faqContents {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.faqContents h2 {
-    color: white;
-}
-
-.faqContents h2::after {
-    background: linear-gradient(90deg, transparent, white, transparent);
-}
-
 
 .accordion-item {
     margin-bottom: 15px;
+    border: 1px solid rgba(0, 0, 139, 0.15);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 139, 0.1);
 }
 
 .accordion-header {
@@ -1001,13 +965,12 @@ section h2::after {
 }
 
 .accordion-header:hover {
-    background: rgba(255,255,255,0.95);
+    background: #f5f5fb;
 }
 
 .accordion-header.active {
     background: linear-gradient(135deg, #00008b 0%, #00008b 100%);
     color: white;
-    border: 2px solid white;
 }
 
 .question-text {
@@ -1044,7 +1007,7 @@ section h2::after {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
-    background: rgba(255,255,255,0.95);
+    background: #fff;
     color: #333;
 }
 
@@ -1065,18 +1028,10 @@ section h2::after {
 }
 
 /* ニュースセクション */
-#notice {
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-}
-
 .noticeContents {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-.noticeContents h2 {
-    color: #00008b;
 }
 
 /* ニュースカード */
@@ -1192,6 +1147,42 @@ section h2::after {
     }
 }
 
+/* ダウンロードCTAセクション */
+.downloadContents {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.download-text {
+    font-size: 16px;
+    line-height: 2;
+    margin-bottom: 32px;
+}
+
+.download-store-badges {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.download-store-badges .store-badge img {
+    height: 52px;
+    width: auto;
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+    section#download h2 {
+        font-size: 26px;
+    }
+
+    .download-store-badges .store-badge img {
+        height: 44px;
+    }
+}
+
 /* フッター */
 footer {
     background: linear-gradient(135deg, #00008b 0%, #00008b 100%);
@@ -1212,10 +1203,6 @@ footer {
 .footerLeft {
     flex: 1;
     text-align: center;
-}
-
-.footer-logo-placeholder {
-    margin-bottom: 30px;
 }
 
 /* ヒーローと同じく1文字ずつ均等配置し、ロゴの幅に揃える */
@@ -1263,18 +1250,6 @@ footer {
     footer {
         --footer-logo-height: 56px;
     }
-}
-
-.footer-store-badges {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-}
-
-.footer-store-badges .store-badge img {
-    height: 44px;
-    width: auto;
-    display: block;
 }
 
 .footerCenter {
