@@ -54,6 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
+    // ヒーローのサブコピーを1文字ずつ順番に表示するため、文字ごとに順番(--i)を振る
+    document.querySelectorAll('.hero-copy-sub span:not(.hero-copy-accent)').forEach((el, i) => {
+        el.style.setProperty('--i', i);
+    });
+
+    // aboutセクションは画面に入ったら子要素を順番に表示する（about-animateが付いている間だけ初期状態を非表示にする）
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+        aboutSection.classList.add('about-animate');
+        observer.observe(aboutSection);
+    }
+
     // ヘッダー背景色とフローティングメニューの表示を更新する関数
     function updateHeaderBackground() {
         const scrollY = window.pageYOffset;
