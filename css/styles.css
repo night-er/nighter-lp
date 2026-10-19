@@ -1155,41 +1155,72 @@ section.section-dark h2::after {
     white-space: nowrap;
 }
 
-/* タブレットは2列（5枚目は横幅いっぱい） */
+/* タブレット・SPはアイコンとタイトルを1行に並べ、説明文をその下に全幅で置くコンパクトなカードにする */
 @media screen and (max-width: 1024px) {
     .feature-list {
         grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 40px;
     }
 
     .feature-card,
     .feature-card:nth-child(n + 4) {
         grid-column: auto;
-        padding: 32px 24px 28px;
+        display: grid;
+        grid-template-columns: 32px 1fr;
+        column-gap: 12px;
+        align-items: center;
+        padding: 18px 20px 20px;
     }
 
+    /* 5枚目は横幅いっぱい */
     .feature-card:nth-child(5) {
         grid-column: span 2;
+    }
+
+    .feature-card:hover {
+        transform: none;
+    }
+
+    .feature-num {
+        top: 14px;
+        right: 16px;
+        font-size: 28px;
+    }
+
+    .feature-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* 右上の番号と重ならないよう右に余白を取る */
+    .feature-title {
+        margin-top: 0;
+        padding-right: 48px;
+        font-size: 18px;
+    }
+
+    .feature-text {
+        grid-column: 1 / -1;
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 1.8;
     }
 }
 
 @media screen and (max-width: 768px) {
+    #feature {
+        padding: 72px 0;
+    }
+
     .feature-list {
         grid-template-columns: 1fr;
-        gap: 16px;
-        margin-top: 40px;
+        gap: 12px;
+        margin-top: 32px;
     }
 
     .feature-card:nth-child(5) {
         grid-column: auto;
-    }
-
-    .feature-num {
-        font-size: 44px;
-    }
-
-    .feature-title {
-        margin-top: 20px;
-        font-size: 20px;
     }
 }
 
