@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.setProperty('--i', i);
     });
 
-    // about〜newsの各セクションは画面に入ったら子要素を順番に表示する（revealが付いている間だけ初期状態を非表示にする）
-    document.querySelectorAll('#about, #feature, #jobs, #how-to, #faq, #news').forEach(section => {
+    // about〜get-appの各セクションは画面に入ったら子要素を順番に表示する（revealが付いている間だけ初期状態を非表示にする）
+    document.querySelectorAll('#about, #feature, #jobs, #how-to, #faq, #news, #get-app').forEach(section => {
         section.classList.add('reveal');
         observer.observe(section);
     });
