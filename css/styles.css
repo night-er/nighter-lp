@@ -1916,6 +1916,15 @@ footer {
     text-align: center;
 }
 
+/* PCの3列表示では、ロゴを「店舗様はこちら」と同じく列の上下中央に置く */
+@media screen and (min-width: 1025px) {
+    .footerLeft {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 /* ヒーローと同じく1文字ずつ均等配置し、ロゴの幅に揃える */
 .footer-copy {
     display: inline-block;
