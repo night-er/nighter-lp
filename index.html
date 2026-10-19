@@ -27,7 +27,6 @@
     <link rel="shortcut icon" href="img/nighter/icon.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/nighter/icon.png" sizes="180x180">
     <link rel="icon" type="image/png" href="img/nighter/icon.png" sizes="192x192">
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     <script src="./js/scripts.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPG9FN2CM4"></script>
@@ -105,7 +104,7 @@
         </section>
         <section id="about">
             <div class="aboutContents">
-                <div class="about-heading">
+                <div class="section-heading">
                     <h2>About</h2>
                     <h3>ナイターとは</h3>
                 </div>
@@ -118,35 +117,42 @@
         </section>
         <section id="feature" class="section-dark">
             <div class="featureContents">
-                <h2>特徴</h2>
-                <div class="scroll-container" data-scroll-indicator="features-worker">
-                    <div class="image-placeholder">
-                        <dotlottie-player
-                            src="https://assets-v2.lottiefiles.com/a/bfbe61de-116d-11ee-b562-db083437b7aa/3gUno03s7L.lottie"
-                            background="transparent" speed="1.5" style="width: 200px; height: 200px;" loop
-                            autoplay></dotlottie-player>
-                        <p>すぐ働ける</p>
-                    </div>
-                    <div class="image-placeholder">
-                        <dotlottie-player
-                            src="https://assets-v2.lottiefiles.com/a/850ba856-116f-11ee-b2c9-c3ba288cf2db/rJuNKNurqq.lottie"
-                            background="transparent" speed="1" style="width: 200px; height: 200px;" loop
-                            autoplay></dotlottie-player>
-                        <p>高時給</p>
-                    </div>
-                    <div class="image-placeholder">
-                        <dotlottie-player
-                            src="https://assets-v2.lottiefiles.com/a/8ba89446-d161-11ee-af12-b3fff5be9f15/KIwMHKf1Pp.lottie"
-                            background="transparent" speed="1" style="width: 200px; height: 200px;" loop
-                            autoplay></dotlottie-player>
-                        <p>即日払い</p>
-                    </div>
+                <div class="section-heading">
+                    <h2>Feature</h2>
+                    <h3>特徴</h3>
                 </div>
-                <div class="scroll-indicators" data-indicators="features-worker">
-                    <span class="indicator-dot active"></span>
-                    <span class="indicator-dot"></span>
-                    <span class="indicator-dot"></span>
-                </div>
+                <ul class="feature-list">
+                    <li class="feature-card">
+                        <span class="feature-num">01</span>
+                        <svg class="feature-icon feature-icon--yen" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 7 12 11.5 15.5 7M12 11.5V17M9 12.5h6M9 15h6"/></svg>
+                        <h4 class="feature-title">高時給</h4>
+                        <p class="feature-text">ナイトワークならではの、時給の高いお仕事が見つかります。</p>
+                    </li>
+                    <li class="feature-card">
+                        <span class="feature-num">02</span>
+                        <svg class="feature-icon feature-icon--bill" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9.5v5M18 9.5v5"/></svg>
+                        <h4 class="feature-title">即日現金払い</h4>
+                        <p class="feature-text">報酬は働いた当日に、現金で受け取れます。</p>
+                    </li>
+                    <li class="feature-card">
+                        <span class="feature-num">03</span>
+                        <svg class="feature-icon feature-icon--clock" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path class="clock-hand" d="M12 12V6.5"/><path d="M12 12l3.5 2"/></svg>
+                        <h4 class="feature-title">時間相談OK</h4>
+                        <p class="feature-text">働く時間を事前に相談できます。例えば開始を<span class="nowrap">20時</span>から<span class="nowrap">21時</span>にずらせたりします。</p>
+                    </li>
+                    <li class="feature-card">
+                        <span class="feature-num">04</span>
+                        <svg class="feature-icon feature-icon--car" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l2-5a2 2 0 0 1 1.9-1.3h10.2A2 2 0 0 1 19 8l2 5v4a1 1 0 0 1-1 1h-1.2M5.2 18H4a1 1 0 0 1-1-1v-4h18"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/><path d="M9.3 17.5h5.4"/></svg>
+                        <h4 class="feature-title">送迎あり</h4>
+                        <p class="feature-text">終電を過ぎても大丈夫。自宅まで送り届けてくれるお店が多くあります。</p>
+                    </li>
+                    <li class="feature-card">
+                        <span class="feature-num">05</span>
+                        <svg class="feature-icon feature-icon--up" viewBox="0 0 24 24" aria-hidden="true"><path class="up-line" pathLength="1" d="M3 17l6-6 4 4 8-8"/><path class="up-head" d="M15 7h6v6"/></svg>
+                        <h4 class="feature-title">多忙日は時給UP</h4>
+                        <p class="feature-text">週末やイベントなど、忙しい日は時給が上がる傾向があります。</p>
+                    </li>
+                </ul>
             </div>
         </section>
         <section id="job-examples">

@@ -653,19 +653,8 @@ section.section-dark h2::after {
     }
 }
 
-/* ナイターとはセクション */
-/* PC: 左に英字＋日本語の二段見出し、右に本文の2カラム */
-.aboutContents {
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 64px;
-    align-items: start;
-}
-
-section#about h2 {
+/* セクション見出し（英字＋日本語の二段、左揃え） */
+.section-heading h2 {
     margin: 0;
     font-size: 72px;
     font-weight: 800;
@@ -675,11 +664,11 @@ section#about h2 {
 }
 
 /* 共通の中央下線は使わない */
-section#about h2::after {
+.section-heading h2::after {
     content: none;
 }
 
-.about-heading h3 {
+.section-heading h3 {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -690,11 +679,38 @@ section#about h2::after {
     letter-spacing: 0.1em;
 }
 
-.about-heading h3::before {
+.section-dark .section-heading h3 {
+    color: #fff;
+}
+
+.section-heading h3::before {
     content: '';
     width: 32px;
     height: 3px;
     background: #fed700;
+}
+
+@media screen and (max-width: 768px) {
+    .section-heading h2 {
+        font-size: 52px;
+    }
+
+    .section-heading h3 {
+        margin-top: 12px;
+        font-size: 16px;
+    }
+}
+
+/* ナイターとはセクション */
+/* PC: 左に二段見出し、右に本文の2カラム */
+.aboutContents {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    align-items: start;
 }
 
 /* 見出しのベースライン付近から本文を始め、左に細い縦線を引く（線は表示時に上から伸ばすため疑似要素） */
@@ -780,15 +796,6 @@ section#about h2::after {
         gap: 32px;
     }
 
-    section#about h2 {
-        font-size: 52px;
-    }
-
-    .about-heading h3 {
-        margin-top: 12px;
-        font-size: 16px;
-    }
-
     .about-body {
         padding: 0;
     }
@@ -854,13 +861,13 @@ section#about h2::after {
     animation: heroRise 0.8s ease-out 1.9s both;
 }
 
-/* ---- aboutのアニメーション（画面に入ったとき） ---- */
-@keyframes aboutRise {
+/* ---- セクションのアニメーション（画面に入ったとき。JSでrevealを付けたセクションのみ） ---- */
+@keyframes revealRise {
     from { opacity: 0; translate: 0 24px; }
     to { opacity: 1; translate: 0 0; }
 }
 
-@keyframes aboutLineX {
+@keyframes revealLineX {
     from { width: 0; }
     to { width: 32px; }
 }
@@ -875,41 +882,46 @@ section#about h2::after {
     to { background-size: 100% 100%; }
 }
 
-#about.about-animate h2,
-#about.about-animate .about-heading h3,
-#about.about-animate .about-lead > span,
-#about.about-animate .about-note,
-#about.about-animate .about-text {
+/* 見出し（共通） */
+.reveal .section-heading h2,
+.reveal .section-heading h3 {
     opacity: 0;
 }
 
 /* セクション共通のh2読み込み時アニメーションは使わない（スクロールで表示する） */
-#about.about-animate h2 {
+.reveal .section-heading h2 {
     animation: none;
 }
 
-#about.about-animate .about-heading h3::before {
+.reveal .section-heading h3::before {
     width: 0;
 }
 
-#about.about-animate .about-body::before {
+.reveal.animate-in .section-heading h2 {
+    animation: revealRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal.animate-in .section-heading h3 {
+    animation: revealRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+.reveal.animate-in .section-heading h3::before {
+    animation: revealLineX 0.5s ease-out 0.4s both;
+}
+
+/* about */
+#about.reveal .about-lead > span,
+#about.reveal .about-note,
+#about.reveal .about-text {
+    opacity: 0;
+}
+
+#about.reveal .about-body::before {
     transform: scaleY(0);
 }
 
-#about.about-animate .about-marker {
+#about.reveal .about-marker {
     background-size: 0% 100%;
-}
-
-#about.animate-in h2 {
-    animation: aboutRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-#about.animate-in .about-heading h3 {
-    animation: aboutRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
-}
-
-#about.animate-in .about-heading h3::before {
-    animation: aboutLineX 0.5s ease-out 0.4s both;
 }
 
 #about.animate-in .about-body::before {
@@ -917,7 +929,7 @@ section#about h2::after {
 }
 
 #about.animate-in .about-lead > span {
-    animation: aboutRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: revealRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 #about.animate-in .about-lead > span:nth-child(1) { animation-delay: 0.3s; }
@@ -929,12 +941,27 @@ section#about h2::after {
 }
 
 #about.animate-in .about-note {
-    animation: aboutRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
+    animation: revealRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
 }
 
 #about.animate-in .about-text {
-    animation: aboutRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.05s both;
+    animation: revealRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.05s both;
 }
+
+/* feature: カードを順番に表示 */
+#feature.reveal .feature-card {
+    opacity: 0;
+}
+
+#feature.animate-in .feature-card {
+    animation: revealRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#feature.animate-in .feature-card:nth-child(1) { animation-delay: 0.35s; }
+#feature.animate-in .feature-card:nth-child(2) { animation-delay: 0.5s; }
+#feature.animate-in .feature-card:nth-child(3) { animation-delay: 0.65s; }
+#feature.animate-in .feature-card:nth-child(4) { animation-delay: 0.8s; }
+#feature.animate-in .feature-card:nth-child(5) { animation-delay: 0.95s; }
 
 /* 動きを減らす設定の端末ではアニメーションしない */
 @media (prefers-reduced-motion: reduce) {
@@ -944,21 +971,25 @@ section#about h2::after {
     .hero-copy-sub span,
     .hero-copy-main,
     .hero-store-badges,
-    #about.about-animate *,
-    #about.about-animate *::before {
+    .reveal *,
+    .reveal *::before {
         animation: none !important;
         opacity: 1 !important;
     }
 
-    #about.about-animate .about-heading h3::before {
+    .feature-icon--up .up-line {
+        stroke-dashoffset: 0;
+    }
+
+    .reveal .section-heading h3::before {
         width: 32px;
     }
 
-    #about.about-animate .about-body::before {
+    #about.reveal .about-body::before {
         transform: none;
     }
 
-    #about.about-animate .about-marker {
+    #about.reveal .about-marker {
         background-size: 100% 100%;
     }
 }
@@ -970,43 +1001,182 @@ section#about h2::after {
     padding: 0 20px;
 }
 
-#feature .image-placeholder {
-    background: #fff;
-    border: 3px solid #fff;
-    box-shadow: none;
+/* PCは上段3枚・下段2枚で横幅いっぱいに並べる（6分割グリッド） */
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+    list-style: none;
 }
 
-#feature .image-placeholder:hover {
-    transform: none;
-    box-shadow: none;
+/* 紺背景になじむガラス風のカード */
+.feature-card {
+    grid-column: span 2;
+    position: relative;
+    padding: 40px 32px 36px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
 
-#feature .image-placeholder p {
-    font-size: 24px;
-    border-top: 2px solid #00008b;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 20px;
-    margin-bottom: auto;
-    width: 100%;
-    text-align: center;
+.feature-card:nth-child(n + 4) {
+    grid-column: span 3;
 }
 
-#feature .scroll-container {
-    justify-content: center;
+.feature-card:hover {
+    border-color: rgba(254, 215, 0, 0.5);
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-4px);
+}
+
+/* 右上の番号はゴールドの袋文字 */
+.feature-num {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(254, 215, 0, 0.6);
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.feature-icon {
+    display: block;
+    width: 44px;
+    height: 44px;
+    fill: none;
+    stroke: #fed700;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ---- アイコンの常時アニメーション ---- */
+/* 円マーク: 飛び跳ねる */
+@keyframes iconBounce {
+    0%, 55%, 100% { translate: 0 0; scale: 1 1; }
+    20% { translate: 0 -9px; scale: 0.96 1.04; }
+    40% { translate: 0 0; scale: 1.08 0.9; }
+    48% { translate: 0 -2px; scale: 0.98 1.02; }
+}
+
+/* お札: ひらひら揺れる */
+@keyframes iconFlutter {
+    0%, 100% { transform: rotate(-7deg) skewY(3deg) translateY(0); }
+    50% { transform: rotate(7deg) skewY(-3deg) translateY(-3px); }
+}
+
+/* 時計: 長針が回る */
+@keyframes iconClockHand {
+    to { rotate: 360deg; }
+}
+
+/* 車: 走っているように小刻みに揺れる */
+@keyframes iconDrive {
+    0%, 100% { translate: 0 0; rotate: 0deg; }
+    25% { translate: 1px -1.5px; rotate: -1.5deg; }
+    50% { translate: 2px 0; rotate: 0deg; }
+    75% { translate: 1px -1px; rotate: 1deg; }
+}
+
+/* 右肩上がりの矢印: 線を繰り返し描く */
+@keyframes iconDrawLine {
+    0% { stroke-dashoffset: 1; }
+    45%, 85% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes iconDrawHead {
+    0%, 35% { opacity: 0; translate: -3px 3px; }
+    50%, 85% { opacity: 1; translate: 0 0; }
+    100% { opacity: 0; translate: 0 0; }
+}
+
+.feature-icon--yen {
+    transform-origin: 50% 100%;
+    animation: iconBounce 1.8s ease-in-out infinite;
+}
+
+.feature-icon--bill {
+    animation: iconFlutter 2.4s ease-in-out infinite;
+}
+
+.feature-icon--clock .clock-hand {
+    transform-origin: 12px 12px;
+    animation: iconClockHand 4s linear infinite;
+}
+
+.feature-icon--car {
+    animation: iconDrive 0.9s ease-in-out infinite;
+}
+
+.feature-icon--up .up-line {
+    stroke-dasharray: 1;
+    animation: iconDrawLine 2.6s ease-out infinite;
+}
+
+.feature-icon--up .up-head {
+    animation: iconDrawHead 2.6s ease-out infinite;
+}
+
+.feature-title {
+    margin-top: 28px;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.feature-text {
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* 時刻などを途中で改行させない */
+.feature-text .nowrap {
+    white-space: nowrap;
+}
+
+/* タブレットは2列（5枚目は横幅いっぱい） */
+@media screen and (max-width: 1024px) {
+    .feature-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-card,
+    .feature-card:nth-child(n + 4) {
+        grid-column: auto;
+        padding: 32px 24px 28px;
+    }
+
+    .feature-card:nth-child(5) {
+        grid-column: span 2;
+    }
 }
 
 @media screen and (max-width: 768px) {
-    #feature .scroll-container {
-        justify-content: flex-start;
-        scroll-snap-type: x mandatory;
-        padding-inline: calc((100% - 280px) / 2);
+    .feature-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 40px;
     }
 
-    #feature .image-placeholder {
-        scroll-snap-align: center;
-        flex-shrink: 0;
-        width: 280px;
+    .feature-card:nth-child(5) {
+        grid-column: auto;
+    }
+
+    .feature-num {
+        font-size: 44px;
+    }
+
+    .feature-title {
+        margin-top: 20px;
+        font-size: 20px;
     }
 }
 

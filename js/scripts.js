@@ -59,12 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.setProperty('--i', i);
     });
 
-    // aboutセクションは画面に入ったら子要素を順番に表示する（about-animateが付いている間だけ初期状態を非表示にする）
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-        aboutSection.classList.add('about-animate');
-        observer.observe(aboutSection);
-    }
+    // about・featureは画面に入ったら子要素を順番に表示する（revealが付いている間だけ初期状態を非表示にする）
+    document.querySelectorAll('#about, #feature').forEach(section => {
+        section.classList.add('reveal');
+        observer.observe(section);
+    });
 
     // ヘッダー背景色とフローティングメニューの表示を更新する関数
     function updateHeaderBackground() {
