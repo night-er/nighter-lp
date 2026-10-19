@@ -867,6 +867,21 @@ section.section-dark h2::after {
 #how-to.animate-in .howto-step:nth-child(3) { animation-delay: 0.65s; }
 #how-to.animate-in .howto-step:nth-child(4) { animation-delay: 0.8s; }
 
+/* faq: 質問を順番に表示 */
+#faq.reveal .accordion-item {
+    opacity: 0;
+}
+
+#faq.animate-in .accordion-item {
+    animation: revealRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#faq.animate-in .accordion-item:nth-child(1) { animation-delay: 0.3s; }
+#faq.animate-in .accordion-item:nth-child(2) { animation-delay: 0.4s; }
+#faq.animate-in .accordion-item:nth-child(3) { animation-delay: 0.5s; }
+#faq.animate-in .accordion-item:nth-child(4) { animation-delay: 0.6s; }
+#faq.animate-in .accordion-item:nth-child(5) { animation-delay: 0.7s; }
+
 /* 動きを減らす設定の端末ではアニメーションしない */
 @media (prefers-reduced-motion: reduce) {
     .hero-bg,
@@ -1343,97 +1358,157 @@ section.section-dark h2::after {
 }
 
 /* よくある質問セクション */
+/* PC: aboutと同じく左に二段見出し、右に質問の一覧 */
 .faqContents {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0 20px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    align-items: start;
 }
 
+.accordion {
+    border-top: 1px solid rgba(0, 0, 139, 0.15);
+}
 
 .accordion-item {
-    margin-bottom: 15px;
-    border: 1px solid rgba(0, 0, 139, 0.15);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 139, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 139, 0.15);
 }
 
 .accordion-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 16px;
     width: 100%;
-    padding: 20px;
-    background: white;
-    color: #00008b;
+    padding: 24px 4px;
     border: none;
+    background: none;
+    color: #00008b;
+    font: inherit;
+    font-size: 17px;
+    font-weight: bold;
     text-align: left;
     cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.accordion-header:hover {
-    background: #f5f5fb;
-}
-
-.accordion-header.active {
-    background: linear-gradient(135deg, #00008b 0%, #00008b 100%);
-    color: white;
 }
 
 .question-text {
     flex: 1;
+    transition: opacity 0.2s ease;
 }
 
-.accordion-icon {
+.accordion-header:hover .question-text {
+    opacity: 0.7;
+}
+
+/* Q・Aの丸いマーク */
+.faq-mark {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
-    margin-left: 10px;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1;
 }
 
-.icon-plus, .icon-minus {
-    font-size: 24px;
+.faq-q {
+    background: #00008b;
+    color: #fff;
+}
+
+.faq-a {
+    background: #fed700;
+    color: #00008b;
+}
+
+/* 開閉アイコン（＋ → −） */
+.accordion-icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.accordion-icon::before,
+.accordion-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    margin-top: -1px;
+    background: #00008b;
     transition: transform 0.3s ease;
 }
 
-.icon-minus {
-    display: none !important;
+.accordion-icon::after {
+    transform: rotate(90deg);
 }
 
-.accordion-header.active .icon-plus {
-    display: none !important;
+.accordion-header.active .accordion-icon::after {
+    transform: rotate(0deg);
 }
 
-.accordion-header.active .icon-minus {
-    display: inline-block !important;
-}
-
+/* 高さ0から中身の高さまでなめらかに開く */
 .accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-    background: #fff;
-    color: #333;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
 }
 
 .accordion-content.active {
-    max-height: 500px;
-    padding: 20px;
+    grid-template-rows: 1fr;
 }
 
-.accordion-content p {
-    line-height: 1.8;
+.accordion-inner {
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+    padding: 0 4px;
+}
+
+.accordion-content.active .accordion-inner {
+    padding-bottom: 24px;
+}
+
+.accordion-inner p {
+    padding-top: 4px;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.9;
 }
 
 @media screen and (max-width: 768px) {
+    .faqContents {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
     .accordion-header {
-        font-size: 16px;
-        padding: 15px;
+        gap: 12px;
+        padding: 20px 0;
+        font-size: 15px;
+    }
+
+    .accordion-inner {
+        gap: 12px;
+        padding: 0;
+    }
+
+    .faq-mark {
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+    }
+
+    .accordion-inner p {
+        font-size: 14px;
     }
 }
 

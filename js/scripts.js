@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.setProperty('--i', i);
     });
 
-    // about・feature・job-examples・how-toは画面に入ったら子要素を順番に表示する（revealが付いている間だけ初期状態を非表示にする）
-    document.querySelectorAll('#about, #feature, #job-examples, #how-to').forEach(section => {
+    // about〜faqの各セクションは画面に入ったら子要素を順番に表示する（revealが付いている間だけ初期状態を非表示にする）
+    document.querySelectorAll('#about, #feature, #job-examples, #how-to, #faq').forEach(section => {
         section.classList.add('reveal');
         observer.observe(section);
     });
@@ -130,8 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
     accordionHeaders.forEach(header => {
         header.addEventListener('click', () => {
             const content = header.nextElementSibling;
-            header.classList.toggle('active');
-            content.classList.toggle('active');
+            const isOpen = header.classList.toggle('active');
+            content.classList.toggle('active', isOpen);
+            header.setAttribute('aria-expanded', isOpen);
         });
     });
 
