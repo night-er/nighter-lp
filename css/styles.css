@@ -963,6 +963,19 @@ section.section-dark h2::after {
 #feature.animate-in .feature-card:nth-child(4) { animation-delay: 0.8s; }
 #feature.animate-in .feature-card:nth-child(5) { animation-delay: 0.95s; }
 
+/* job-examples: カードを順番に表示 */
+#job-examples.reveal .job-card {
+    opacity: 0;
+}
+
+#job-examples.animate-in .job-card {
+    animation: revealRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#job-examples.animate-in .job-card:nth-child(1) { animation-delay: 0.35s; }
+#job-examples.animate-in .job-card:nth-child(2) { animation-delay: 0.5s; }
+#job-examples.animate-in .job-card:nth-child(3) { animation-delay: 0.65s; }
+
 /* 動きを減らす設定の端末ではアニメーションしない */
 @media (prefers-reduced-motion: reduce) {
     .hero-bg,
@@ -1187,52 +1200,110 @@ section.section-dark h2::after {
     padding: 0 20px;
 }
 
-#job-examples .image-placeholder {
-    background: transparent;
-    border: 3px solid #00008b;
-    box-shadow: none;
-    width: 280px;
-    flex-shrink: 0;
+.job-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+    list-style: none;
 }
 
-#job-examples .image-placeholder:hover {
-    transform: none;
-    box-shadow: none;
+/* 写真の下側に紺のグラデーションをかけ、英字の職種名を重ねる */
+.job-photo {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #00008b;
 }
 
-#job-examples .image-placeholder img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+.job-photo img {
     display: block;
-    margin-bottom: 0;
-}
-
-#job-examples .image-placeholder p {
-    font-size: 24px;
-    border-top: 2px solid #00008b;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 0;
-    margin-bottom: auto;
     width: 100%;
-    text-align: center;
-    white-space: nowrap;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-#job-examples .scroll-container {
-    justify-content: center;
+.job-card:hover .job-photo img {
+    transform: scale(1.06);
 }
 
+.job-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 139, 0.8) 0%, rgba(0, 0, 139, 0) 55%);
+}
+
+.job-en {
+    position: absolute;
+    left: 20px;
+    bottom: 16px;
+    z-index: 1;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+}
+
+.job-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    color: #00008b;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.job-title::before {
+    content: '';
+    width: 16px;
+    height: 3px;
+    background: #fed700;
+}
+
+.job-text {
+    margin-top: 8px;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* インジケーターはスライダー表示のSPのみ */
+#job-examples .scroll-indicators {
+    display: none;
+}
+
+/* SPは横スワイプのスライダー（次のカードを少し覗かせる） */
 @media screen and (max-width: 768px) {
-    #job-examples .scroll-container {
-        justify-content: flex-start;
+    .job-list {
+        display: flex;
+        gap: 16px;
+        margin: 40px -20px 0;
+        padding: 0 20px;
+        overflow-x: auto;
         scroll-snap-type: x mandatory;
-        padding-inline: calc((100% - 280px) / 2);
+        scroll-padding-inline: 20px;
+        scrollbar-width: none;
     }
 
-    #job-examples .image-placeholder {
-        scroll-snap-align: center;
+    .job-list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .job-card {
+        flex: 0 0 78%;
+        scroll-snap-align: start;
+    }
+
+    .job-en {
+        font-size: 24px;
+    }
+
+    #job-examples .scroll-indicators {
+        display: flex;
     }
 }
 

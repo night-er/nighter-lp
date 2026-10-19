@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.setProperty('--i', i);
     });
 
-    // about・featureは画面に入ったら子要素を順番に表示する（revealが付いている間だけ初期状態を非表示にする）
-    document.querySelectorAll('#about, #feature').forEach(section => {
+    // about・feature・job-examplesは画面に入ったら子要素を順番に表示する（revealが付いている間だけ初期状態を非表示にする）
+    document.querySelectorAll('#about, #feature, #job-examples').forEach(section => {
         section.classList.add('reveal');
         observer.observe(section);
     });
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ドットインジケーター機能
     function initScrollIndicators() {
-        const scrollContainers = document.querySelectorAll('.scroll-container[data-scroll-indicator]');
+        const scrollContainers = document.querySelectorAll('[data-scroll-indicator]');
 
         scrollContainers.forEach(container => {
             const indicatorId = container.dataset.scrollIndicator;
@@ -221,19 +221,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (container.offsetParent === null) return;
 
             const dots = indicators.querySelectorAll('.indicator-dot');
-            // .image-placeholder または .news-card を取得
-            let items = container.querySelectorAll('.image-placeholder');
-            if (items.length === 0) {
-                items = container.querySelectorAll('.news-card');
-            }
+            const items = container.children;
 
             if (items.length === 0) return;
+
+            // カード間の余白はCSSのgapから取得する
+            const getGap = () => parseFloat(getComputedStyle(container).columnGap) || 0;
 
             // スクロール位置に応じてアクティブなドットを更新
             function updateIndicators() {
                 const scrollLeft = container.scrollLeft;
                 const itemWidth = items[0].offsetWidth;
-                const gap = 30; // CSSのgapと同じ値
+                const gap = getGap();
 
                 // 現在のアイテムインデックスを計算
                 const currentIndex = Math.round(scrollLeft / (itemWidth + gap));
@@ -256,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     const itemWidth = items[0].offsetWidth;
-                    const gap = 30; // CSSのgapと同じ値
+                    const gap = getGap();
                     const scrollPosition = index * (itemWidth + gap);
 
                     container.scrollTo({
