@@ -42,25 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // アニメーション対象の要素を監視（最適化: 監視対象を削減）
-    // 大きな単位（セクション、主要コンテナ）のみを監視
-    const animateElements = document.querySelectorAll(
-        '.image-placeholder, .image-placeholder-large, ' +
-        '.howtoUser, .hero-title'
-    );
-
-    animateElements.forEach(el => {
-        el.classList.add('scroll-animate');
-        observer.observe(el);
-    });
-
     // ヒーローのサブコピーを1文字ずつ順番に表示するため、文字ごとに順番(--i)を振る
     document.querySelectorAll('.hero-copy-sub span:not(.hero-copy-accent)').forEach((el, i) => {
         el.style.setProperty('--i', i);
     });
 
-    // about・feature・job-examplesは画面に入ったら子要素を順番に表示する（revealが付いている間だけ初期状態を非表示にする）
-    document.querySelectorAll('#about, #feature, #job-examples').forEach(section => {
+    // about・feature・job-examples・how-toは画面に入ったら子要素を順番に表示する（revealが付いている間だけ初期状態を非表示にする）
+    document.querySelectorAll('#about, #feature, #job-examples, #how-to').forEach(section => {
         section.classList.add('reveal');
         observer.observe(section);
     });

@@ -24,78 +24,6 @@ body {
     }
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* スクロールアニメーション */
-.scroll-animate {
-    opacity: 0;
-}
-
-.scroll-animate.animate-in {
-    animation: fadeInUp 0.8s ease-out forwards;
-}
-
-/* 特定の要素に異なるアニメーションを適用 */
-.image-placeholder.scroll-animate.animate-in {
-    animation: scaleIn 0.6s ease-out forwards;
-}
-
-.howtoUser.scroll-animate.animate-in {
-    animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.accordion-item.scroll-animate.animate-in {
-    animation: fadeInLeft 0.6s ease-out forwards;
-}
-
-.hero-title.scroll-animate.animate-in {
-    animation: fadeInUp 1.2s ease-out forwards;
-}
-
-/* 遅延アニメーション（複数要素を順番に表示） */
-.scroll-animate:nth-child(1) { animation-delay: 0s; }
-.scroll-animate:nth-child(2) { animation-delay: 0.1s; }
-.scroll-animate:nth-child(3) { animation-delay: 0.2s; }
-.scroll-animate:nth-child(4) { animation-delay: 0.3s; }
-.scroll-animate:nth-child(5) { animation-delay: 0.4s; }
-.scroll-animate:nth-child(6) { animation-delay: 0.5s; }
-
-.scroll-container .scroll-animate:nth-child(1) { animation-delay: 0s; }
-.scroll-container .scroll-animate:nth-child(2) { animation-delay: 0.15s; }
-.scroll-container .scroll-animate:nth-child(3) { animation-delay: 0.3s; }
-.scroll-container .scroll-animate:nth-child(4) { animation-delay: 0.45s; }
-
 /* ヘッダー */
 header {
     background-color: transparent;
@@ -572,57 +500,6 @@ section.section-dark h2::after {
     background: white;
 }
 
-/* プレースホルダー共通スタイル */
-.image-placeholder {
-    background: rgba(0,0,139,0.1);
-    /* border: 3px dashed rgba(0,0,139,0.3); */
-    border-radius: 12px;
-    min-width: 280px;
-    min-height: 280px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(0,0,139,0.15);
-}
-
-.image-placeholder:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 28px rgba(0,0,139,0.25);
-    border-color: #00008b;
-}
-
-.image-placeholder span {
-    font-size: 24px;
-    color: rgba(0,0,139,0.5);
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.image-placeholder p {
-    color: #00008b;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-/* 横スクロールコンテナ */
-.scroll-container {
-    display: flex;
-    gap: 30px;
-    overflow-x: auto;
-    padding: 20px;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    /* スクロールバーを非表示 */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.scroll-container::-webkit-scrollbar {
-    display: none;
-}
-
 /* ドットインジケーター */
 .scroll-indicators {
     display: none; /* PCでは非表示 */
@@ -975,6 +852,20 @@ section.section-dark h2::after {
 #job-examples.animate-in .job-card:nth-child(1) { animation-delay: 0.35s; }
 #job-examples.animate-in .job-card:nth-child(2) { animation-delay: 0.5s; }
 #job-examples.animate-in .job-card:nth-child(3) { animation-delay: 0.65s; }
+
+/* how-to: ステップを順番に表示 */
+#how-to.reveal .howto-step {
+    opacity: 0;
+}
+
+#how-to.animate-in .howto-step {
+    animation: revealRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#how-to.animate-in .howto-step:nth-child(1) { animation-delay: 0.35s; }
+#how-to.animate-in .howto-step:nth-child(2) { animation-delay: 0.5s; }
+#how-to.animate-in .howto-step:nth-child(3) { animation-delay: 0.65s; }
+#how-to.animate-in .howto-step:nth-child(4) { animation-delay: 0.8s; }
 
 /* 動きを減らす設定の端末ではアニメーションしない */
 @media (prefers-reduced-motion: reduce) {
@@ -1345,131 +1236,109 @@ section.section-dark h2::after {
     padding: 0 20px;
 }
 
-.howtoUser {
-    background: white;
-    margin: 30px 0;
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: 0 8px 24px rgba(0,0,139,0.15);
-    transition: all 0.3s ease;
+.howto-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+    list-style: none;
 }
 
-.howtoUser:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,139,0.25);
-}
-
-/* 紺背景のセクション上でカードの輪郭が消えないよう、見出し帯は白地＋下線にする */
-.howtoUser h3 {
-    background: #fff;
-    color: #00008b;
-    border-bottom: 2px solid rgba(0, 0, 139, 0.15);
-    padding: 20px;
-    margin: -40px -40px 30px -40px;
-    border-radius: 16px 16px 0 0;
-    font-size: 28px;
-    text-align: center;
-}
-
-.howtoUser h4 {
-    font-size: 48px;
-    color: #00008b;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.howtoUser > p {
-    color: #333;
-    margin: 15px auto;
-    font-size: 18px;
-    text-align: left;
-    max-width: 320px;
-}
-
-.howtoStep {
+/* STEP番号の右に、次のステップへつながる線を引く */
+.howto-step-num {
     display: flex;
-    align-items: center;
-    gap: 30px;
-    margin: 40px 0;
-    padding: 20px;
-    background: rgba(0,0,139,0.03);
-    border-radius: 12px;
+    align-items: baseline;
+    gap: 6px;
+    color: #fed700;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1;
 }
 
-.howtoStep > div {
+.howto-step-num span {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+}
+
+.howto-step-num::after {
+    content: '';
     flex: 1;
+    align-self: center;
+    margin-left: 8px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.3);
 }
 
-.image-placeholder-step {
-    background: transparent;
-    border: none;
-    border-radius: 12px;
-    min-height: 200px;
+.howto-step:last-child .howto-step-num::after {
+    content: none;
+}
+
+/* スクリーンショットはスマホの枠に入れて見せる */
+.howto-phone {
+    max-width: 200px;
+    margin: 24px auto 0;
+    padding: 6px;
+    border-radius: 28px;
+    background: #fff;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* アプリ完成までの仮の画面（iPhoneの画面比率） */
+.howto-screen {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: none;
-}
-
-.image-placeholder-step span {
-    font-size: 20px;
-    color: rgba(0,0,139,0.5);
+    gap: 6px;
+    aspect-ratio: 1170 / 2532;
+    border-radius: 22px;
+    background: linear-gradient(160deg, #eef0fb 0%, #d9ddf3 100%);
+    color: rgba(0, 0, 139, 0.45);
+    font-size: 12px;
     font-weight: bold;
 }
 
-.image-placeholder-step img {
-    width: 33%;
-    height: auto;
-    display: block;
-    border-radius: 16px;
-    border: 2px solid #00008b;
+.howto-screen span {
+    color: rgba(0, 0, 139, 0.6);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
 }
 
-.howtoStep h5 {
-    background-color: #00008b;
-    color: white;
-    font-size: 16px;
-    margin-bottom: 15px;
-    padding: 5px 13px;
-    border-radius: 13px;
-    display: inline-block;
+.howto-step-text {
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    line-height: 1.9;
 }
 
-.howtoStep p {
-    color: #333;
-    line-height: 1.8;
+#how-to .scroll-indicators {
+    display: none;
 }
 
+/* SPは横スワイプのスライダー */
 @media screen and (max-width: 768px) {
-    section {
-        padding: 50px 0;
+    .howto-steps {
+        display: flex;
+        gap: 16px;
+        margin: 40px -20px 0;
+        padding: 0 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 20px;
+        scrollbar-width: none;
     }
 
-    .howtoUser {
-        padding: 30px 20px;
+    .howto-steps::-webkit-scrollbar {
+        display: none;
     }
 
-    .howtoUser h3 {
-        margin: -30px -20px 20px -20px;
-        font-size: 20px;
+    .howto-step {
+        flex: 0 0 70%;
+        scroll-snap-align: start;
     }
 
-    .howtoStep {
-        flex-direction: column;
-    }
-
-    .image-placeholder-step {
-        width: 100%;
-        min-height: 150px;
-        order: 2;
-    }
-
-    .image-placeholder-step img {
-        width: 50%;
-    }
-
-    .howtoStep > div:not(.image-placeholder-step) {
-        order: 1;
+    #how-to .scroll-indicators {
+        display: flex;
     }
 }
 
