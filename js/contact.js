@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // フォームデータを取得
         const templateParams = {
-            user_type: document.getElementById('user_type').value,
             user_name: document.getElementById('user_name').value,
             user_email: document.getElementById('user_email').value,
             user_phone: document.getElementById('user_phone').value || '未入力',

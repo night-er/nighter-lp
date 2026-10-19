@@ -2052,77 +2052,128 @@ footer {
     }
 }
 
-/* パンくずリスト */
+/* ---- サブページ共通 ---- */
+/* ページの頭: 白地に英字＋日本語の二段見出し（トップページのセクション見出しと同じ形）とパンくず。
+   紺のヘッダーと見分けがつくよう白地にし、右側にフクロウのシルエットを薄く透かす */
+.page-header {
+    position: relative;
+    overflow: hidden;
+    padding: 140px 20px 48px;
+    border-bottom: 1px solid rgba(0, 0, 139, 0.12);
+    background: #fff;
+    color: #00008b;
+}
+
+/* フクロウの画像はマスクとして使い、色と濃さはここで指定する */
+.page-header::after {
+    content: '';
+    position: absolute;
+    top: 76px;
+    right: max(20px, calc(50% - 480px));
+    bottom: -40px;
+    aspect-ratio: 79 / 107;
+    background: #00008b;
+    opacity: 0.06;
+    -webkit-mask: url("../img/nighter/common/owl-silhouette.png") no-repeat center bottom / contain;
+    mask: url("../img/nighter/common/owl-silhouette.png") no-repeat center bottom / contain;
+    pointer-events: none;
+}
+
+/* 本文と左端を揃える */
+.page-header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.page-heading h1 {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+
+.page-heading p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.page-heading p::before {
+    content: '';
+    width: 32px;
+    height: 3px;
+    background: #fed700;
+}
+
 .breadcrumb {
-    max-width: 1024px;
-    margin: 80px auto 20px auto;
-    padding: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 14px;
-    color: #666;
+    margin-top: 40px;
+    color: #999;
+    font-size: 13px;
 }
 
 .breadcrumb a {
     color: #00008b;
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 .breadcrumb a:hover {
-    color: #00006b;
     text-decoration: underline;
 }
 
-.breadcrumb span {
-    color: #999;
+/* 本文: 白背景にそのまま置き、読みやすい幅に絞る */
+#info, #contact, #terms, #privacy {
+    background: #fff;
+    padding: 72px 20px 100px;
+}
+
+.infoContents, .contactContents, .termsContents, .privacyContents {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #333;
+    line-height: 1.9;
 }
 
 @media screen and (max-width: 768px) {
-    .breadcrumb {
-        font-size: 12px;
-        padding: 15px 20px;
+    .page-header {
+        padding: 112px 20px 36px;
     }
-}
 
-/* ページタイトル */
-.page-title {
-    font-size: 36px;
-    color: #00008b;
-    margin-bottom: 40px;
-    font-weight: bold;
-    border-bottom: 3px solid #00008b;
-    padding-bottom: 15px;
-}
+    .page-header::after {
+        top: 70px;
+        right: -20px;
+        bottom: -30px;
+    }
 
-@media screen and (max-width: 768px) {
-    .page-title {
-        font-size: 28px;
-        margin-bottom: 30px;
+    .page-heading h1 {
+        font-size: 44px;
+    }
+
+    .page-heading p {
+        margin-top: 12px;
+        font-size: 16px;
+    }
+
+    .breadcrumb {
+        margin-top: 28px;
+        font-size: 12px;
+    }
+
+    #info, #contact, #terms, #privacy {
+        padding: 48px 20px 72px;
     }
 }
 
 /* 運営情報 */
-#info {
-    background: #fff;
-    padding: 0 20px 80px;
-}
-
-.infoContents {
-    max-width: 1024px;
-    margin: 0 auto;
-    background: white;
-    padding: 60px;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-}
-
 @media screen and (max-width: 768px) {
-    .infoContents {
-        padding: 30px 20px;
-    }
-
     .infoContents dl {
         flex-direction: column;
         padding: 15px 0;
@@ -2163,26 +2214,6 @@ footer {
 }
 
 /* お問い合わせ */
-#contact {
-    background: #fff;
-    padding: 0 20px 80px;
-}
-
-.contactContents {
-    max-width: 1024px;
-    margin: 0 auto;
-    background: white;
-    padding: 60px;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-}
-
-@media screen and (max-width: 768px) {
-    .contactContents {
-        padding: 30px 20px;
-    }
-}
-
 /* コンタクトフォーム */
 .contact-form {
     max-width: 600px;
@@ -2212,7 +2243,6 @@ footer {
 }
 
 .form-group input,
-.form-group select,
 .form-group textarea {
     width: 100%;
     padding: 14px 16px;
@@ -2225,7 +2255,6 @@ footer {
 }
 
 .form-group input:focus,
-.form-group select:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: #00008b;
@@ -2235,15 +2264,6 @@ footer {
 .form-group input::placeholder,
 .form-group textarea::placeholder {
     color: #aaa;
-}
-
-.form-group select {
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300008b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: 40px;
 }
 
 .form-group textarea {
@@ -2314,7 +2334,6 @@ footer {
     }
 
     .form-group input,
-    .form-group select,
     .form-group textarea {
         padding: 12px 14px;
         font-size: 16px;
@@ -2328,26 +2347,7 @@ footer {
 }
 
 /* 利用規約・プライバシーポリシー */
-#terms, #privacy {
-    background: #fff;
-    padding: 0 20px 80px;
-}
-
-.termsContents, .privacyContents {
-    max-width: 1024px;
-    margin: 0 auto;
-    background: white;
-    padding: 60px;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    color: #333;
-}
-
 @media screen and (max-width: 768px) {
-    .termsContents, .privacyContents {
-        padding: 30px 20px;
-    }
-
     .termsContents h2, .privacyContents h2 {
         font-size: 20px;
         margin-bottom: 20px;
@@ -2363,12 +2363,22 @@ footer {
 }
 
 .termsContents h2, .privacyContents h2 {
+    margin: 56px 0 16px;
+    padding-left: 16px;
+    border-left: 4px solid #fed700;
     color: #00008b;
-    border-bottom: 2px solid #00008b;
-    padding-bottom: 10px;
-    margin-top: 40px;
-    margin-bottom: 30px;
+    font-size: 22px;
+    line-height: 1.5;
     text-align: left;
+    animation: none;
+}
+
+.termsContents h2:first-child, .privacyContents h2:first-child {
+    margin-top: 0;
+}
+
+.termsContents h2::after, .privacyContents h2::after {
+    content: none;
 }
 
 .termsContents ul, .termsContents ol, .privacyContents ul, .privacyContents ol {
