@@ -71,8 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
             .then(function() {
                 // フォームを送信完了の画面に入れ替える
-                document.getElementById('business-done-phone').textContent = templateParams.user_phone;
-                document.getElementById('business-done-email').textContent = templateParams.user_email;
                 form.reset();
                 form.hidden = true;
                 done.hidden = false;

@@ -2778,19 +2778,6 @@ section .biz-done-title::after {
     line-height: 1.9;
 }
 
-/* 連絡先（電話番号とメールアドレスを1行ずつ） */
-.biz-done-contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    margin-top: 8px;
-    color: #00008b;
-    font-size: 15px;
-    line-height: 1.7;
-    word-break: break-all;
-}
-
 /* iPhone SEなど幅375px以下は見出しが途中で折り返さないよう小さく */
 @media screen and (max-width: 375px) {
     section .biz-done-title {
