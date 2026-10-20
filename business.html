@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/nighter/common/icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/nighter/common/icon.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="img/nighter/common/icon.png" sizes="192x192">
+    <script src="./js/scripts.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="./js/business.js"></script>
+    <title>ナイター｜店舗様向け ご利用のご相談</title>
+    <meta name="description" content="ナイトワークのスタッフ求人に特化したスキマバイトアプリ「ナイター」のご利用を検討中の店舗様向けのご相談ページです。">
+</head>
+<body class="subpage">
+    <header>
+        <div class="headerContents">
+            <a href="/">
+                <img src="./img/nighter/common/logo-white.png" alt="Nighter" class="logo">
+            </a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="nav-menu">
+                <a href="https://about.night-er.com/#top" class="nav-item current">トップ</a>
+                <a href="https://about.night-er.com/#about" class="nav-item">ナイターとは</a>
+                <a href="https://about.night-er.com/#feature" class="nav-item">特徴</a>
+                <a href="https://about.night-er.com/#jobs" class="nav-item">お仕事の例</a>
+                <a href="https://about.night-er.com/#how-to" class="nav-item">使い方</a>
+                <a href="https://about.night-er.com/#faq" class="nav-item">よくある質問</a>
+                <a href="https://about.night-er.com/#news" class="nav-item">お知らせ</a>
+                <a href="https://about.night-er.com/#get-app" class="nav-item">使ってみる</a>
+                <a href="../business" class="business-btn">店舗様はこちら</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="business">
+            <div class="biz-inner">
+                <!-- 店舗様向けの案内（PCは左に固定、SPはフォームの上） -->
+                <div class="biz-intro">
+                    <div class="biz-heading">
+                        <p class="biz-heading-en">For Business</p>
+                        <h1>ご利用を検討中の<br>店舗様へ</h1>
+                    </div>
+                    <p class="biz-lead"><span>必要な夜に、必要な人手を。</span></p>
+                    <p class="biz-text">「ナイター」はナイトワークのスタッフ求人に特化したスキマバイトアプリです。<br>ご利用の流れや料金など、まずはお気軽にご相談ください。</p>
+                </div>
+
+                <!-- 相談フォーム -->
+                <div class="biz-card">
+                    <form id="business-form" class="biz-form" novalidate>
+                        <div class="biz-field">
+                            <label for="shop_name">店舗名<span class="biz-req">必須</span></label>
+                            <input type="text" id="shop_name" name="shop_name" placeholder="例）BAR NIGHTER" required>
+                        </div>
+                        <fieldset class="biz-field">
+                            <legend>業態<span class="biz-req">必須</span></legend>
+                            <div class="biz-chips">
+                                <label class="biz-chip"><input type="radio" name="shop_type" value="バー" required><span>バー</span></label>
+                                <label class="biz-chip"><input type="radio" name="shop_type" value="ナイトクラブ"><span>ナイトクラブ</span></label>
+                                <label class="biz-chip"><input type="radio" name="shop_type" value="キャバクラ"><span>キャバクラ</span></label>
+                                <label class="biz-chip"><input type="radio" name="shop_type" value="その他"><span>その他</span></label>
+                            </div>
+                        </fieldset>
+                        <div class="biz-field">
+                            <label for="shop_address">所在地<span class="biz-req">必須</span></label>
+                            <input type="text" id="shop_address" name="shop_address" placeholder="例）東京都港区六本木1-2-3" required>
+                        </div>
+                        <div class="biz-row">
+                            <div class="biz-field">
+                                <label for="user_name">ご担当者名<span class="biz-req">必須</span></label>
+                                <input type="text" id="user_name" name="user_name" placeholder="例）山田 太郎" required>
+                            </div>
+                            <div class="biz-field">
+                                <label for="user_phone">電話番号<span class="biz-req">必須</span></label>
+                                <input type="tel" id="user_phone" name="user_phone" placeholder="例）090-1234-5678" required>
+                            </div>
+                        </div>
+                        <div class="biz-field">
+                            <label for="user_email">メールアドレス<span class="biz-req">必須</span></label>
+                            <input type="email" id="user_email" name="user_email" placeholder="例）taro.yamada@gmail.com" required>
+                        </div>
+                        <fieldset class="biz-field">
+                            <legend>募集を検討している職種<span class="biz-opt">任意・複数選択可</span></legend>
+                            <div class="biz-chips">
+                                <label class="biz-chip"><input type="checkbox" name="job_types" value="バーテンダー"><span>バーテンダー</span></label>
+                                <label class="biz-chip"><input type="checkbox" name="job_types" value="セキュリティ"><span>セキュリティ</span></label>
+                                <label class="biz-chip"><input type="checkbox" name="job_types" value="ウェイター（黒服）"><span>ウェイター（黒服）</span></label>
+                                <label class="biz-chip"><input type="checkbox" name="job_types" value="その他"><span>その他</span></label>
+                            </div>
+                        </fieldset>
+                        <div class="biz-field">
+                            <label for="message">ご相談内容<span class="biz-opt">任意</span></label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <label class="biz-agree">
+                            <input type="checkbox" id="agree" name="agree" required>
+                            <span><a href="https://about.night-er.com/privacy" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する</span>
+                        </label>
+                        <p class="biz-error" id="business-error" role="alert"></p>
+                        <button type="submit" id="business-submit" class="biz-submit">
+                            <span class="biz-submit-text">この内容で相談する</span>
+                            <span class="biz-spinner" aria-hidden="true"></span>
+                        </button>
+                        <p id="business-message" class="biz-message" role="status"></p>
+                    </form>
+
+                    <!-- 送信完了（送信後にフォームと入れ替えて表示） -->
+                    <div class="biz-done" id="business-done" tabindex="-1" hidden>
+                        <div class="biz-done-mark" aria-hidden="true">
+                            <span class="biz-done-owl"></span>
+                            <span class="biz-done-badge"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"/></svg></span>
+                        </div>
+                        <p class="biz-done-en">Thank you</p>
+                        <h2 class="biz-done-title">ご相談を受け付けました</h2>
+                        <p class="biz-done-text">2営業日ほどで担当者よりご連絡いたします。</p>
+                        <p class="biz-done-contact"><strong id="business-done-phone"></strong><strong id="business-done-email"></strong></p>
+                        <a href="/" class="biz-done-btn">トップページへ戻る</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footerContents">
+            <div class="footerLeft">
+                <div class="footer-logo-placeholder">
+                    <p class="footer-copy">
+                        <span class="footer-copy-sub"><span>夜</span><span>の</span><span class="footer-copy-accent"><span>ス</span><span>キ</span><span>マ</span><span>バ</span><span>イ</span><span>ト</span></span><span>は</span></span>
+                        <img src="./img/nighter/common/logo-white.png" alt="Nighter" class="logo">
+                    </p>
+                </div>
+            </div>
+            <div class="footerCenter">
+                <h2>その他メニュー</h2>
+                <nav>
+                    <a href="https://about.night-er.com/info">運営情報</a>
+                    <a href="https://about.night-er.com/contact">お問い合わせ</a>
+                    <a href="https://about.night-er.com/terms">利用規約</a>
+                    <a href="https://about.night-er.com/privacy">プライバシーポリシー</a>
+                </nav>
+            </div>
+            <div class="footerRight">
+                <a href="../business" class="business-btn">店舗様はこちら</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

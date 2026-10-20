@@ -2396,3 +2396,493 @@ footer {
     margin-left: 1em;
     margin-top: 10px;
 }
+
+/* ---- 店舗様向け ご利用の相談ページ ---- */
+/* お問い合わせ（白地）と一線を画すよう、ページ全体を夜景写真に紺を重ねた暗いトーンにする */
+#business {
+    min-height: 100vh;
+    padding: 132px 20px 100px;
+    /* 文字のある左側は濃いめ、右に向かって夜景が見えるよう薄くする */
+    background:
+        linear-gradient(100deg, rgba(0, 0, 139, 0.86) 0%, rgba(0, 0, 139, 0.6) 50%, rgba(0, 0, 60, 0.45) 100%),
+        url("../img/nighter/common/hero-bg.jpg") center / cover fixed;
+    color: #fff;
+}
+
+/* PC: 左に案内（スクロールしても残る）、右にフォームのカード */
+.biz-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+    gap: 64px;
+    align-items: start;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.biz-intro {
+    position: sticky;
+    top: 112px;
+}
+
+.biz-heading {
+    margin-top: 24px;
+}
+
+.biz-heading-en {
+    color: #fed700;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+}
+
+.biz-heading h1 {
+    margin-top: 12px;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.biz-lead {
+    margin-top: 28px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 紺の背景では白文字の下半分に帯を重ねると読みにくいため、文字全体をゴールドで塗り文字を紺にする */
+.biz-lead span {
+    padding: 2px 10px;
+    background: #fed700;
+    color: #00008b;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.biz-text {
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* フォームのカード */
+.biz-card {
+    padding: 40px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+    color: #333;
+}
+
+.biz-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.biz-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.biz-field label,
+.biz-field legend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    color: #00008b;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.biz-field legend {
+    margin-bottom: 8px;
+}
+
+.biz-req,
+.biz-opt {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.biz-req {
+    background: #00008b;
+    color: #fff;
+}
+
+.biz-opt {
+    background: #eef0f8;
+    color: #666;
+}
+
+.biz-field input[type="text"],
+.biz-field input[type="tel"],
+.biz-field input[type="email"],
+.biz-field textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid #d6d9ea;
+    border-radius: 10px;
+    background: #f7f8fc;
+    color: #333;
+    font: inherit;
+    font-size: 16px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.biz-field input::placeholder,
+.biz-field textarea::placeholder {
+    color: #aab;
+}
+
+.biz-field input:focus,
+.biz-field textarea:focus {
+    outline: none;
+    border-color: #00008b;
+    background: #fff;
+}
+
+.biz-field textarea {
+    resize: vertical;
+}
+
+.biz-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* 業態・職種はボタン型の選択肢 */
+.biz-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.biz-chip input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.biz-chip span {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #d6d9ea;
+    border-radius: 999px;
+    background: #f7f8fc;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.biz-chip span:hover {
+    border-color: #00008b;
+}
+
+.biz-chip input:checked + span {
+    border-color: #00008b;
+    background: #00008b;
+    color: #fff;
+}
+
+.biz-chip input:focus-visible + span {
+    outline: 2px solid #fed700;
+    outline-offset: 2px;
+}
+
+.biz-agree {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.biz-agree input {
+    width: 18px;
+    height: 18px;
+    accent-color: #00008b;
+}
+
+.biz-agree a {
+    color: #00008b;
+}
+
+.biz-error {
+    color: #d33;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.biz-error:empty {
+    display: none;
+}
+
+/* 送信ボタンはゴールド */
+.biz-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 999px;
+    background: #fed700;
+    color: #00008b;
+    font: inherit;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.biz-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.biz-submit:disabled {
+    opacity: 0.6;
+    cursor: wait;
+    transform: none;
+}
+
+/* 送信中のくるくる */
+.biz-spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(0, 0, 139, 0.25);
+    border-top-color: #00008b;
+    border-radius: 50%;
+    animation: bizSpin 0.8s linear infinite;
+}
+
+.biz-submit.is-loading .biz-spinner {
+    display: inline-block;
+}
+
+@keyframes bizSpin {
+    to { rotate: 360deg; }
+}
+
+/* ---- 送信完了 ---- */
+.biz-done {
+    padding: 16px 0 8px;
+    text-align: center;
+    outline: none;
+    animation: bizDoneIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* display指定がhidden属性より優先されるため、明示的に隠す */
+.biz-done[hidden],
+.biz-form[hidden] {
+    display: none;
+}
+
+/* フクロウのシルエットが浮き上がり、右下にゴールドのチェックのバッジが付く */
+.biz-done-mark {
+    position: relative;
+    width: 64px;
+    height: 86px;
+    margin: 0 auto;
+}
+
+/* フクロウの画像はマスクとして使い、色はここで指定する */
+.biz-done-owl {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #00008b;
+    -webkit-mask: url("../img/nighter/common/owl-silhouette.png") no-repeat center bottom / contain;
+    mask: url("../img/nighter/common/owl-silhouette.png") no-repeat center bottom / contain;
+    opacity: 0;
+    translate: 0 12px;
+    animation: bizOwlIn 0.6s ease-out 0.2s forwards;
+}
+
+.biz-done-badge {
+    position: absolute;
+    right: -14px;
+    bottom: -4px;
+    display: flex;
+    width: 34px;
+    height: 34px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    background: #fed700;
+    scale: 0;
+    animation: bizBadgePop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s forwards;
+}
+
+.biz-done-badge svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: #00008b;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+@keyframes bizOwlIn {
+    to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes bizBadgePop {
+    to { scale: 1; }
+}
+
+@keyframes bizDoneIn {
+    from { opacity: 0; translate: 0 16px; }
+    to { opacity: 1; translate: 0 0; }
+}
+
+.biz-done-en {
+    margin-top: 20px;
+    color: #c9a800;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+}
+
+/* セクション共通のh2（中央の飾り線・余白・読み込み時の動き）を打ち消す */
+section .biz-done-title {
+    margin: 6px 0 0;
+    color: #00008b;
+    font-size: 26px;
+    font-weight: 800;
+    animation: none;
+}
+
+section .biz-done-title::after {
+    content: none;
+}
+
+.biz-done-text {
+    margin-top: 16px;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* 連絡先（電話番号とメールアドレスを1行ずつ） */
+.biz-done-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    margin-top: 8px;
+    color: #00008b;
+    font-size: 15px;
+    line-height: 1.7;
+    word-break: break-all;
+}
+
+/* iPhone SEなど幅375px以下は見出しが途中で折り返さないよう小さく */
+@media screen and (max-width: 375px) {
+    section .biz-done-title {
+        font-size: 20px;
+    }
+}
+
+.biz-done-btn {
+    display: block;
+    width: 100%;
+    margin-top: 32px;
+    padding: 16px;
+    border-radius: 999px;
+    background: #00008b;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.biz-done-btn:hover {
+    opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .biz-done,
+    .biz-done-owl,
+    .biz-done-badge {
+        animation: none;
+        opacity: 1;
+        translate: none;
+        scale: 1;
+    }
+}
+
+.biz-message {
+    display: none;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.biz-message.error {
+    display: block;
+    background: #fdecec;
+    color: #a12626;
+}
+
+@media screen and (max-width: 1024px) {
+    .biz-inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 40px;
+        max-width: 640px;
+    }
+
+    .biz-intro {
+        position: static;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #business {
+        padding: 100px 20px 72px;
+        /* 縦に長いため、写真は上の案内部分の高さに合わせて街並みを見せ、下は紺に溶け込ませる */
+        background:
+            linear-gradient(180deg, rgba(0, 0, 139, 0.75) 0%, rgba(0, 0, 139, 0.45) 35%, #00008b 640px),
+            url("../img/nighter/common/hero-bg.jpg") 40% top / auto 640px no-repeat,
+            #00008b;
+    }
+
+    .biz-heading {
+        margin-top: 0;
+    }
+
+    .biz-heading h1 {
+        font-size: 30px;
+    }
+
+    .biz-lead {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    .biz-card {
+        padding: 28px 20px;
+        border-radius: 16px;
+    }
+
+    .biz-row {
+        grid-template-columns: 1fr;
+    }
+}
